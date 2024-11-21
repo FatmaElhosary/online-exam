@@ -1,0 +1,31 @@
+<div class="flex flex-column align-items-center
+
+ m-auto ">
+<h2 class="block justify-content-start ">Sign in</h2>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+  <input
+    type="text"  
+    pInputText
+    formControlName="email"
+    placeholder="email"
+    class="w-full md:w-30rem block mb-3"
+    [ngClass]="{'ng-invalid ng-dirty':! loginForm.controls.email.valid}"
+  />
+
+  <p-password
+  
+  [ngClass]="{'ng-invalid ng-dirty':! loginForm.controls.password.valid}"
+    class="w-full block mb-3"
+    [toggleMask]="true"
+    placeholder="password"
+    [feedback]="false"
+    formControlName="password"
+  />
+  <p-button
+    type="submit"
+    label="Login"
+    [rounded]="true"
+    [disabled]="loginForm.invalid"
+  />
+</form>
+</div>
