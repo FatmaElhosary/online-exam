@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ResetPasswordService } from './reset-password.service';
+import { ResetPasswordAdapter } from './reset-password.service';
 
 describe('ResetPasswordService', () => {
-  let service: ResetPasswordService;
+  let service: ResetPasswordAdapter;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ResetPasswordService);
+    service = TestBed.inject(ResetPasswordAdapter);
   });
 
   it('should be created', () => {

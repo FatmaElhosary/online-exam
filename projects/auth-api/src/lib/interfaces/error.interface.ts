@@ -1,4 +1,4 @@
 export interface ErrorResponseDTO {
-  message: string;
+  message: string|null;
   code: number;
 }

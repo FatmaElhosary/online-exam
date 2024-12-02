@@ -24,6 +24,27 @@ export const routes: Routes = [
             (e) => e.RegisterComponent
           ),
       },
+      {
+        path: 'forget-password',
+        loadComponent: () =>
+          import('./core/pages/forget-password/forget-password.component').then(
+            (e) => e.ForgetPasswordComponent
+          ),
+      },
+      {
+        path: 'verify-code',
+        loadComponent: () =>
+          import('./core/pages/verify-code/verify-code.component').then(
+            (e) => e.VerifyCodeComponent
+          ),
+      },
+      {
+        path: 'reset-password',
+        loadComponent: () =>
+          import('./core/pages/reset-password/reset-password.component').then(
+            (e) => e.ResetPasswordComponent
+          ),
+      },
     ],
   },
   {

@@ -1,37 +1,156 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-    <h3 class="w-full" [ngStyle]="{ color: 'var(--black)',}">Sign up</h3>
-    <input
-      type="text"
-      pInputText
-      formControlName="email"
-      placeholder="email"
-      class="w-full block mb-3"
-      [ngClass]="{ 'ng-invalid ng-dirty': !loginForm.controls.email.valid }"
-    />
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <h3 class="w-full" [ngStyle]="{ color: 'var(--black)',}">Sign up</h3>
+
+  <input
+    type="text"
+    pInputText
+    formControlName="username"
+    placeholder="username"
+    class="w-full block mb-3"
+    [ngClass]="{ 'ng-invalid ng-dirty': !registerForm.controls.username.valid }"
+  />
+  @if(registerForm.controls['username'].invalid &&
+  registerForm.controls['username'].touched ){
+  @if(registerForm.get('username')?.errors?.['required']){
+  <app-error [errorMessages]="['username is required']"></app-error>
+  } @if(registerForm.get('username')?.errors?.['pattern']){
+  <app-error
+    [errorMessages]="[
+      'username should be character only with minlength: 4 and maxlength: 25'
+    ]"
+  ></app-error>
+  } }
+
+  <input
+    type="text"
+    pInputText
+    formControlName="firstName"
+    placeholder="firstName"
+    class="w-full block mb-3"
+    [ngClass]="{
+      'ng-invalid ng-dirty': !registerForm.controls.firstName.valid
+    }"
+  />
+  @if(registerForm.controls['firstName'].invalid &&
+  registerForm.controls['firstName'].touched ){
+  @if(registerForm.get('firstName')?.errors?.['required']){
+  <app-error [errorMessages]="['firstName is required']"></app-error>
+  } @if(registerForm.get('firstName')?.errors?.['pattern']){
+  <app-error
+    [errorMessages]="['firstName should be characters only']"
+  ></app-error>
+  } }
+  <input
+    type="text"
+    pInputText
+    formControlName="lastName"
+    placeholder="lastName"
+    class="w-full block mb-3"
+    [ngClass]="{ 'ng-invalid ng-dirty': !registerForm.controls.lastName.valid && registerForm.controls['lastName'].touched  }"
+  />
+  @if(registerForm.controls['lastName'].invalid &&
+  registerForm.controls['lastName'].touched ){
+  @if(registerForm.get('lastName')?.errors?.['required']){
+  <app-error [errorMessages]="['lastName is required']"></app-error>
+  } @if(registerForm.get('lastName')?.errors?.['pattern']){
+  <app-error
+    [errorMessages]="['lastName should be characters only']"
+  ></app-error>
+  } }
+  <input
+    type="text"
+    pInputText
+    formControlName="email"
+    placeholder="email"
+    class="w-full block mb-3"
+    [ngClass]="{ 'ng-invalid ng-dirty': !registerForm.controls.email.valid }"
+  />
+  @if(registerForm.controls['email'].invalid &&
+  registerForm.controls['email'].touched ){
+  @if(registerForm.get('email')?.errors?.['required']){
+  <app-error [errorMessages]="['email is required']"></app-error>
+  } @if(registerForm.get('email')?.errors?.['email']){
+  <app-error [errorMessages]="['email not valid']"></app-error>
+  } }
+  <p-password
+    [ngClass]="{ 'ng-invalid ng-dirty': !registerForm.controls.password.valid }"
+    class="w-full block mb-3"
+    inputStyleClass="w-full"
+    [style]="{ width: '100%' }"
+    [toggleMask]="true"
+    placeholder="password"
+    [feedback]="false"
+    formControlName="password"
+  />
+  @if(registerForm.controls['password'].invalid &&
+  registerForm.controls['password'].touched ){
+  @if(registerForm.get('password')?.errors?.['required']){
+  <app-error [errorMessages]="['password is required']"></app-error>
+  } @if(registerForm.get('password')?.errors?.['pattern']){
+  <app-error
+    [errorMessages]="[
+      'password length should be at min 6 chars . With upper case letter and a number at least with special character'
+    ]"
+  ></app-error>
+  } }
+
+  <p-password
+    [ngClass]="{ 'ng-invalid ng-dirty': !registerForm.controls.password.valid }"
+    class="w-full block mb-3"
+    inputStyleClass="w-full"
+    [style]="{ width: '100%' }"
+    [toggleMask]="true"
+    placeholder="rePassword"
+    [feedback]="false"
+    formControlName="rePassword"
+  />
+  @if(registerForm.controls['rePassword'].invalid &&
+  registerForm.controls['rePassword'].touched ){
+  @if(registerForm.get('rePassword')?.errors?.['required']){
+  <app-error [errorMessages]="['rePassword is required']"></app-error>
+  } @if(registerForm.get('rePassword')?.errors?.['pattern']){
+  <app-error
+    [errorMessages]="[
+      'rePassword length should be at min 6 chars . With upper case letter and a number at least with special character'
+    ]"
+  ></app-error>
+  } }
+
   
-    <p-password
-      [ngClass]="{ 'ng-invalid ng-dirty': !loginForm.controls.password.valid }"
-      class="w-full block mb-3"
-      inputStyleClass="w-full"
-      [style]="{ width: '100%' }"
-      [toggleMask]="true"
-      placeholder="password"
-      [feedback]="false"
-      formControlName="password"
-    />
-    <p-button
-      class="w-full block mb-3 link-style"
-      styleClass="p-0 mb-2"
-      label="Recover Password ?"
-      [link]="true"
-    />
-  
-    <p-button
-      class="w-full block my-3"
-      [style]="{ width: '100%' }"
-      type="submit"
-      label="Sign in"
-      [rounded]="true"
-      [disabled]="loginForm.invalid"
-    />
-  </form>
+  <input
+    type="text"
+    pInputText
+    formControlName="phone"
+    placeholder="phone"
+    class="w-full block mb-3"
+    [ngClass]="{ 'ng-invalid ng-dirty': !registerForm.controls.phone.valid }"
+  />
+  @if(registerForm.controls['phone'].invalid &&
+  registerForm.controls['phone'].touched ){
+  @if(registerForm.get('phone')?.errors?.['required']){
+  <app-error [errorMessages]="['phone is required']"></app-error>
+  } @if(registerForm.get('phone')?.errors?.['pattern']){
+  <app-error
+    [errorMessages]="[
+      'phone should be Numbers'
+    ]"
+  ></app-error>
+  } }
+  <div class="text-center flex align-content-center justify-content-center">
+    <p class="p-0 m-0">Already have an account?</p>
+    <p-button [routerLink]="['/auth/login']"
+    routerLinkActive="router-link-active" styleClass="p-0 mx-1" [ngStyle]="{ color: '--var(--primary-color)',}" label="Login" [link]="true" />
+  </div>
+
+  <p-button
+    class="w-full block my-3"
+    [style]="{ width: '100%' }"
+    type="submit"
+    label="Create Account"
+    [rounded]="true"
+    [disabled]="registerForm.invalid"
+  />
+  @if(backendError){
+  <app-error [errorMessages]="[backendError]"></app-error>
+  }
+</form>

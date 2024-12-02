@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ForgetPasswordService } from './forget-password.service';
+import { ForgetPasswordAdapter } from './forget-password.service';
 
 describe('ForgetPasswordService', () => {
-  let service: ForgetPasswordService;
+  let service: ForgetPasswordAdapter;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ForgetPasswordService);
+    service = TestBed.inject(ForgetPasswordAdapter);
   });
 
   it('should be created', () => {
