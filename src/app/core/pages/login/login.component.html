@@ -1,31 +1,57 @@
-<div class="flex flex-column align-items-center
-
- m-auto ">
-<h2 class="block justify-content-start ">Sign in</h2>
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" >
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+  <h3 class="w-full" [ngStyle]="{ color: 'var(--black)',}">Sign in</h3>
   <input
-    type="text"  
+    type="text"
     pInputText
     formControlName="email"
     placeholder="email"
-    class="w-full md:w-30rem block mb-3"
-    [ngClass]="{'ng-invalid ng-dirty':! loginForm.controls.email.valid}"
-  />
-
-  <p-password
-  
-  [ngClass]="{'ng-invalid ng-dirty':! loginForm.controls.password.valid}"
     class="w-full block mb-3"
+    [ngClass]="{ 'ng-invalid ng-dirty': !loginForm.controls.email.valid }"
+  />
+  @if(loginForm.controls['email'].invalid && loginForm.controls['email'].touched
+  ){
+    @if(loginForm.get('email')?.errors?.['required']){
+      <app-error [errorMessages]="['email is required']"></app-error>
+    }
+    @if(loginForm.get('email')?.errors?.['email']){
+      <app-error [errorMessages]="['email not valid']"></app-error>
+    }
+  }
+  <p-password
+    [ngClass]="{ 'ng-invalid ng-dirty': !loginForm.controls.password.valid }"
+    class="w-full block mb-3"
+    inputStyleClass="w-full"
+    [style]="{ width: '100%' }"
     [toggleMask]="true"
     placeholder="password"
     [feedback]="false"
     formControlName="password"
   />
+  @if(loginForm.controls['password'].invalid && loginForm.controls['password'].touched
+  ){
+    @if(loginForm.get('password')?.errors?.['required']){
+      <app-error [errorMessages]="['password is required']"></app-error>
+    }
+    @if(loginForm.get('password')?.errors?.['pattern']){
+      <app-error [errorMessages]="['password length should be at min 6 chars . With upper case letter and a number at least with special character']"></app-error>
+    }
+  }
   <p-button
+    class="w-full block mb-3 link-style"
+    styleClass="p-0 mb-2"
+    label="Recover Password ?"
+    [link]="true"
+  />
+
+  <p-button
+    class="w-full block my-3"
+    [style]="{ width: '100%' }"
     type="submit"
-    label="Login"
+    label="Sign in"
     [rounded]="true"
     [disabled]="loginForm.invalid"
   />
+  @if(backendError){
+    <app-error [errorMessages]="[backendError]"></app-error>
+  }
 </form>
-</div>

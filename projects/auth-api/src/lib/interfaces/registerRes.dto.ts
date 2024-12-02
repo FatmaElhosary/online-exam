@@ -1,6 +1,6 @@
 import { ErrorResponseDTO } from "./error.interface";
 
-export interface LoginResponseDTO{
+export interface RegisterResponseDTO{
     message: string,
     token: string,
     user: {
@@ -19,7 +19,7 @@ export interface LoginResponseDTO{
     
 }
 
-export  interface LoginAdapterRes{
+export  interface RegisterAdapterRes{
     message: string;
     token: string;
     userEmail: string;

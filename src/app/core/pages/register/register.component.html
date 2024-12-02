@@ -1,1 +1,37 @@
-<p>register works!</p>
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <h3 class="w-full" [ngStyle]="{ color: 'var(--black)',}">Sign up</h3>
+    <input
+      type="text"
+      pInputText
+      formControlName="email"
+      placeholder="email"
+      class="w-full block mb-3"
+      [ngClass]="{ 'ng-invalid ng-dirty': !loginForm.controls.email.valid }"
+    />
+  
+    <p-password
+      [ngClass]="{ 'ng-invalid ng-dirty': !loginForm.controls.password.valid }"
+      class="w-full block mb-3"
+      inputStyleClass="w-full"
+      [style]="{ width: '100%' }"
+      [toggleMask]="true"
+      placeholder="password"
+      [feedback]="false"
+      formControlName="password"
+    />
+    <p-button
+      class="w-full block mb-3 link-style"
+      styleClass="p-0 mb-2"
+      label="Recover Password ?"
+      [link]="true"
+    />
+  
+    <p-button
+      class="w-full block my-3"
+      [style]="{ width: '100%' }"
+      type="submit"
+      label="Sign in"
+      [rounded]="true"
+      [disabled]="loginForm.invalid"
+    />
+  </form>

@@ -1,13 +1,13 @@
 import { TestBed } from '@angular/core/testing';
 
-import { AuthApiAdapterService } from './auth-api-adapter.service';
+import { AuthLoginApiAdapter } from './auth-login-api-adapter.service';
 
 describe('AuthApiAdapterService', () => {
-  let service: AuthApiAdapterService;
+  let service: AuthLoginApiAdapter;
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(AuthApiAdapterService);
+    service = TestBed.inject(AuthLoginApiAdapter);
   });
 
   it('should be created', () => {
