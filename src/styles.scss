@@ -1,21 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
+@import url("https://fonts.googleapis.com/css2?family=Smooch&display=swap");
 
 :root {
   --blue-color: #4461f2;
-  --dark-blue:#122D9C;
+  --dark-blue: #122d9c;
   --black: #000000;
   --white: #ffffff;
-  --light-blue:#F0F4FC;
-
-    --primary-color:#4461f2;;
- 
+  --light-blue: #f0f4fc;
+  --primary-color: #4461f2;
 }
 * {
   text-decoration: none;
   font-family: "Poppins";
+  margin: 0;
 }
+
 .link-style {
   width: 100% !important;
   text-align: end;

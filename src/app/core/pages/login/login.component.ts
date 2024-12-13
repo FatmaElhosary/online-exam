@@ -1,4 +1,4 @@
-import { LoginAdapterRes } from './../../../../../dist/auth-api/lib/interfaces/loginRes.dto.d';
+ import { LoginAdapterRes } from './../../../../../dist/auth-api/lib/interfaces/loginRes.dto.d';
 import { InputTextModule } from 'primeng/inputtext';
 import { Component, OnInit } from '@angular/core';
 import {
@@ -10,10 +10,12 @@ import {
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { AuthApiService } from 'auth-api';
+
 import { LoginDTO } from '../../../../../dist/auth-api/lib/interfaces/login.dto';
 import { CommonModule } from '@angular/common';
 import { ErrorComponent } from '../../../shared/components/ui/error/error.component';
 import { Router, RouterModule } from '@angular/router';
+import { TokenService } from '../../services/token.service';
 
 @Component({
   selector: 'app-login',
@@ -25,7 +27,7 @@ import { Router, RouterModule } from '@angular/router';
     ButtonModule,
     CommonModule,
     ErrorComponent,
-    RouterModule
+    RouterModule,
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
@@ -33,9 +35,10 @@ import { Router, RouterModule } from '@angular/router';
 export class LoginComponent implements OnInit {
   constructor(
     private _authApiService: AuthApiService,
+    private _tokenService: TokenService,
     private _router: Router
   ) {}
-  backendError: string | undefined|null = '';
+  backendError: string | undefined | null = '';
   loginForm = new FormGroup({
     email: new FormControl('', [Validators.required, Validators.email]),
     password: new FormControl('', [
@@ -51,6 +54,7 @@ export class LoginComponent implements OnInit {
       next: (res) => {
         console.log(res);
         if (res.message == 'success') {
+          this._tokenService.setToken(res.token);
           this._router.navigate(['/home']);
         } else {
           this.backendError = res.error?.message;

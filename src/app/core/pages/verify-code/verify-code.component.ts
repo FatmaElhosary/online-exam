@@ -36,7 +36,7 @@ export class VerifyCodeComponent {
     this._authApiService
       .verifyCode(this.verifyCodeForm.value as VerifyCodeDTO)
       .subscribe({
-        next: (res) => {
+        next: (res:any) => {
           console.log(res);
           if (res.message == 'Success') {
             this._router.navigate(['/auth/reset-password']);
@@ -49,15 +49,15 @@ export class VerifyCodeComponent {
   }
 
   resendCode(){
-    this._authApiService.resetPassword({email:this.email} as ResetPasswordDTO).subscribe({
-      next: (res) => {
-        console.log(res);
-        if (res.message == 'success') {
-          console.log('code send');
-        } else {
-          this.backendError = res.error?.message;
-        }
-      },
-    });
+    // this._authApiService.resetPassword({email:this.email} as ResetPasswordDTO).subscribe({
+    //   next: (res) => {
+    //     console.log(res);
+    //     if (res.message == 'success') {
+    //       console.log('code send');
+    //     } else {
+    //       this.backendError = res.error?.message;
+    //     }
+    //   },
+    // });
   }
 }

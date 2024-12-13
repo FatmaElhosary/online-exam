@@ -1,6 +1,6 @@
-<div class="grid grid-nogutter h-full ">
-  <div class="col-12 md:col-6  right-part">
-    <h1 [ngStyle]="{color:'var( --black)'}">Welcome to</h1>
+<div class="grid grid-nogutter h-full">
+  <div class="col-12 md:col-6 right-part">
+    <h1 [ngStyle]="{ color: 'var( --black)' }">Welcome to</h1>
     <h1>Elevate</h1>
     <p>Quidem autem voluptatibus qui quaerat aspernatur architecto natus</p>
     <!-- <img src="assets/images/bro.svg" alt="" /> -->
@@ -14,15 +14,20 @@
       />
     </div>
   </div>
-  <div class="col-12 md:col-6 ">
+  <div class="col-12 md:col-6">
     <div class="card flex flex-wrap gap-1 justify-content-end">
-   
-    
-      <p-button [routerLink]="['/auth/login']"
-      routerLinkActive="router-link-active" [text]="true" label="Sign in" />
-      <p-button label="Register" [text]="true" [routerLink]="['/auth/register']"/>
+      <p-button
+        [routerLink]="['/auth/login']"
+        routerLinkActive="router-link-active"
+        [text]="true"
+        label="Sign in"
+      />
+      <p-button
+        label="Register"
+        [text]="true"
+        [routerLink]="['/auth/register']"
+      />
     </div>
-
     <div class="flex align-items-center justify-content-center h-full">
       <router-outlet></router-outlet>
     </div>
