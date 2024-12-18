@@ -1,0 +1,22 @@
+<div  class="p-4 absolute z-5 w-full bg-white"   >
+    <div class="menu-header ">
+      <img src="assets/images/Logo.svg" alt="Logo" class="logo" />
+      <i class="pi pi-times" style="color: var(--black)" (click)="closeSidebar(true)"></i>
+
+    </div>
+  
+    <div class="menu-item">
+
+      <button pButton pRipple type="button" label="Dashboard" icon="pi pi-th-large" class="p-button-text"></button>
+    </div>
+  
+    <div class="menu-item">
+      <button pButton pRipple type="button" label="Quiz History" icon="pi pi-history" class="p-button-text"></button>
+    </div>
+  
+    <div class="menu-item">
+      <button pButton pRipple type="button" label="Log Out" icon="pi pi-sign-out" class="p-button-text" (click)="logout()"></button>
+    </div>
+</div>
+  
+  

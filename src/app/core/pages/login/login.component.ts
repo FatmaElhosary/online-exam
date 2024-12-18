@@ -1,5 +1,6 @@
  import { LoginAdapterRes } from './../../../../../dist/auth-api/lib/interfaces/loginRes.dto.d';
 import { InputTextModule } from 'primeng/inputtext';
+
 import { Component, OnInit } from '@angular/core';
 import {
   FormControl,
@@ -28,6 +29,7 @@ import { TokenService } from '../../services/token.service';
     CommonModule,
     ErrorComponent,
     RouterModule,
+    
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',

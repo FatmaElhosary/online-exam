@@ -5,8 +5,12 @@
   [subjectImagSrc]="subject.icon"
 ></app-subject>
 
-} @if(subjects==[]) {
+}
+
+@if(subjects==[]) {
 <h3>No Quezis found</h3>
 } @if(errorMessage){
 <h3>{{ errorMessage }}</h3>
 }
+
+

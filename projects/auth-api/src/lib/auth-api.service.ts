@@ -22,6 +22,8 @@ import { VerifyCodeAdapter } from './adapter/verify-code.service';
 import { ResetPasswordDTO } from './interfaces/resetPassword.dto';
 import { ResetPasswordAdapterRes } from './interfaces/resetPasswordRes.dto';
 import { ResetPasswordAdapter } from './adapter/reset-password.service';
+import { LogoutAdapterRes } from './interfaces/logoutRes.dto';
+import { LogoutAdapter } from './adapter/logout.service';
 
 @Injectable({
   providedIn: 'root',
@@ -33,8 +35,15 @@ export class AuthApiService implements AuthApiInterface {
     private _authRegisterAdapterer: AuthRegisterAdapterer,
     private _forgetPasswordAdapter: ForgetPasswordAdapter,
     private _verifyCodeAdapter:VerifyCodeAdapter,
-    private _resetPasswordAdapter:ResetPasswordAdapter
+    private _resetPasswordAdapter:ResetPasswordAdapter,
+    private _logoutAdapter:LogoutAdapter,
   ) {}
+  logout(): Observable<LogoutAdapterRes> {
+    return this._httpClient.get(AuthEndPoints.LOG_OUT    ).pipe(
+      map((res: any) => this._logoutAdapter.adapt(res)),
+      catchError((err) => of(err))
+    );
+  }
 
   login(data: LoginDTO): Observable<LoginAdapterRes> {
     return this._httpClient.post(AuthEndPoints.LOGIN, data).pipe(

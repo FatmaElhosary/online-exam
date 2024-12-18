@@ -1,13 +1,17 @@
 <nav class="navbar m-0">
   <div class="navbar-left">
-    <img src="assets\images\align-justified.svg" alt="" />
-    <img src="assets\images\search.svg" alt="" />
+    <img src="assets\images\align-justified.svg" alt="" (click)="toggleSidebar()"/>
+    <img src="assets\images\search.svg" alt="" (click)="toggleSearch()" [ngStyle]="{'display': (!showSearch) ? 'block' : ' none'}" />
   </div>
+  <div class="navbar-center " [ngStyle]="{'display': (showSearch) ? 'block' : ' none'}">
+    <p-iconField iconPosition="left">
+      <p-inputIcon styleClass="pi pi-search" iconfield.icon.red	= "color: var(--dark-blue)" />
+      <input type="text" pInputText placeholder="Search Quiz" />
+    </p-iconField>
+  </div>
+
   <div class="navbar-right">
-    <img
-      src="assets\images\profile.png"
-      alt="Profile"
-      class="profile-image"
-    />
+    <img src="assets\images\profile.png" alt="Profile" class="profile-image" />
   </div>
 </nav>
+<app-sidebar [ngStyle]="{'display': (showSidebar) ? 'block' : ' none'}" (closeEmmit)="toggleSidebar()" (logoutEmmit)="logout()"></app-sidebar>
