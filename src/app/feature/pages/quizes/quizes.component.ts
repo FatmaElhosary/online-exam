@@ -3,11 +3,12 @@ import { SubjectComponent } from '../../../shared/components/ui/subject/subject.
 import { SubjectsService } from '../../services/subjects.service';
 import { Subject } from '../../services/interfaces/subjects.adapter.res';
 import { ScrollingModule } from '@angular/cdk/scrolling';
+import { RouterModule,     } from '@angular/router';
 
 @Component({
   selector: 'app-quizes',
   standalone: true,
-  imports: [SubjectComponent ,ScrollingModule],
+  imports: [SubjectComponent ,ScrollingModule,RouterModule],
   templateUrl: './quizes.component.html',
   styleUrl: './quizes.component.scss',
 })

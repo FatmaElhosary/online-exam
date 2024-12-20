@@ -1,0 +1,16 @@
+<div  class=" flex align-items-center justify-content-between mb-3 p-3 shadow-3" style="border-radius: 5px;">
+    <!-- Quiz Logo -->
+    <div class="flex align-items-center">
+      <img src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png" alt="{{ quiz.title }} Icon" class="mr-3" style="width: 70px; height: 70px;"/>
+      <div class=" ">
+        <h4 class="m-0">{{ quiz.title }}</h4>
+        <p class="m-0 text-xs text-400">{{ quiz.numberOfQuestions }} Questions</p>
+      </div>
+    </div>
+
+    <!-- Quiz Duration and Start Button -->
+    <div class=" ">
+      <p class="m-0 mr-2 text-xs text-center">{{ quiz.duration }}</p>
+      <button class="btn-start text-white-alpha-90"  >Start</button>
+    </div>
+  </div>

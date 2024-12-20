@@ -11,7 +11,6 @@
   --white: #ffffff;
   --light-blue: #f0f4fc;
   --primary-color: #4461f2;
- 
 }
 * {
   text-decoration: none;
@@ -27,25 +26,22 @@
   padding: 1.3rem !important;
 }
 
-
 .p-inputtext {
- margin: 0;
+  margin: 0;
 }
 
 .p-icon-field-left > .p-inputtext {
   padding-left: 2.5rem !important;
-  padding-bottom:  .5rem !important;
-  padding-top:  .5rem !important;
+  padding-bottom: 0.5rem !important;
+  padding-top: 0.5rem !important;
 }
 .p-icon-field-left .p-input-icon:first-of-type {
   left: 0.75rem !important;
   color: var(--blue-color);
 }
 .p-icon-field .p-input-icon {
- 
   margin-top: -0.5rem;
 }
-
 
 .link-style {
   width: 100% !important;

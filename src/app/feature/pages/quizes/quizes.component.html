@@ -1,16 +1,13 @@
 <h2>Quizes</h2>
 @for(subject of subjects ;track subject._id ){
 <app-subject
-  [subject]="subject.name"
-  [subjectImagSrc]="subject.icon"
-></app-subject>
 
-}
+[routerLink]="['/home/exams/{{subject._id}}' ]"  [queryParams]="{ subject: subject._id,subjectName:subject.name}" [subject]="subject">
 
-@if(subjects==[]) {
+>  </app-subject>
+
+} @if(subjects==[]) {
 <h3>No Quezis found</h3>
 } @if(errorMessage){
 <h3>{{ errorMessage }}</h3>
 }
-
-

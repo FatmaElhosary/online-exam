@@ -1,9 +1,9 @@
 import { ErrorResponseDTO } from './error';
 
-export interface SubjectsResDTO {
+export interface ExamsResDTO {
   message: string;
   metadata: MetaData;
-  subjects: Subject[];
+  exams: Exam[];
   error: ErrorResponseDTO;
 }
 export interface MetaData {
@@ -11,15 +11,18 @@ export interface MetaData {
   numberOfPages: number;
   limit: number;
 }
-export interface Subject {
+export interface Exam {
   _id: string;
-  name: string;
-  icon: string;
+  title: string;
+  duration: number;
+  subject: string;
+  numberOfQuestions: number;
+  active: boolean;
   createdAt: string;
 }
-export interface SubjectsResAdapter {
+export interface ExamsResAdapter {
   message: string;
-  data: Subject[];
+  data: Exam[];
   pagination: MetaData;
   err: ErrorResponseDTO;
 }

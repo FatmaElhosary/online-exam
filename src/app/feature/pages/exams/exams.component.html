@@ -1,0 +1,18 @@
+<div class="p-4">
+  <h2 class=" ">{{ subjectName }}</h2>
+  <div class="p-grid p-dir-col">
+    @for( quiz of quizzes ;track quiz._id ){
+    <app-exam [quiz]="quiz"></app-exam>
+    }
+    <!-- angular @empty array show the messg before display array? -->
+
+    <!-- @empty{
+    <h2 class=" ">There Are No Quizes For {{subjectName}}</h2>
+    } -->
+
+    
+    <!-- @if(quizzes.length==0){
+    <h2 class=" ">There Are No Quizes For {{subjectName}}</h2>
+    }  -->
+  </div>
+</div>

@@ -57,7 +57,7 @@ export class LoginComponent implements OnInit {
         console.log(res);
         if (res.message == 'success') {
           this._tokenService.setToken(res.token);
-          this._router.navigate(['/home']);
+          this._router.navigate(['/home/quizes']);
         } else {
           this.backendError = res.error?.message;
         }
