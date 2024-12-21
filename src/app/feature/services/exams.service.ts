@@ -8,20 +8,22 @@ import { GetAllExamsOnSubjectAdapter } from './adapter/get-all-examsonsubject.se
 import { ExamsAPIEEndpoints } from './enums/exams.api.endpoints';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class ExamsService implements ExamsApiInterface{
+export class ExamsService implements ExamsApiInterface {
+  constructor(
+    private _httpClient: HttpClient,
+    private _getAllExamsOnSubjectAdapter: GetAllExamsOnSubjectAdapter
+  ) {}
+  getAllExamsOnSubject(subjectId: string): Observable<ExamsResAdapter> {
+    // Setup log namespace query parameter
+    let params = new HttpParams().set('subject', subjectId);
 
-  constructor( private _httpClient: HttpClient, 
-    private _getAllExamsOnSubjectAdapter:GetAllExamsOnSubjectAdapter
-  ) { }
-  getAllExamsOnSubject(subjectId:string): Observable<ExamsResAdapter> {
-        // Setup log namespace query parameter
-        let params = new HttpParams().set('subject', subjectId);
-
-    return this._httpClient.get(ExamsAPIEEndpoints.GET_ALL_EXAMS_ON_SUBJECT,{params:params}).pipe(
+    return this._httpClient
+      .get(ExamsAPIEEndpoints.GET_ALL_EXAMS_ON_SUBJECT, { params: params })
+      .pipe(
         map((res: any) => this._getAllExamsOnSubjectAdapter.adapt(res)),
-             catchError((err: any) => of(err))
-    );
+        catchError((err: any) => of(err))
+      );
   }
 }

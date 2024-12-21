@@ -2,8 +2,13 @@
   <h2 class=" ">{{ subjectName }}</h2>
   <div class="p-grid p-dir-col">
     @for( quiz of quizzes ;track quiz._id ){
-    <app-exam [quiz]="quiz"></app-exam>
+    <app-exam [quiz]="quiz"  (startExam)="startExam()"></app-exam>
     }
+
+    @if(errorMessage){
+      <h3>{{ errorMessage }}</h3>
+      }
+      
     <!-- angular @empty array show the messg before display array? -->
 
     <!-- @empty{

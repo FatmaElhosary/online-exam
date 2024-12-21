@@ -15,6 +15,7 @@ import { ButtonModule } from 'primeng/button';
 })
 export class ExamsComponent {
   quizzes: Exam[] = [];
+  errorMessage:string|null='';
   subjectId: string | null = '';
   subjectName: string | null = '';
   constructor(
@@ -39,8 +40,14 @@ ngAfterViewInit(): void {
       next: (res) => {
         console.log(res);
         this.quizzes = res.data;
-        // this.errorMessage = res.err?.message ?? null;
+        this.errorMessage = res.err?.message ?? null;
+       
+        
       },
     });
+  }
+
+  startExam(){
+   //open modal
   }
 }

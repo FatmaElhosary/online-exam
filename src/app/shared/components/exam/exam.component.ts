@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { Exam } from '../../../feature/services/interfaces/exams.adapter.res';
 
@@ -10,6 +10,8 @@ import { Exam } from '../../../feature/services/interfaces/exams.adapter.res';
   styleUrl: './exam.component.scss'
 })
 export class ExamComponent {
+
+@Output() startExam=new EventEmitter<boolean>();
 @Input() quiz:Exam= {
   "_id": "670070cc30a3c3c1944a9c66",
   "title": "React Quiz",
@@ -19,4 +21,9 @@ export class ExamComponent {
   "active": true,
   "createdAt": "2024-10-04T22:48:44.245Z"
 };
+
+
+openExam(start:boolean){
+this.startExam.emit(true);
+}
 }
