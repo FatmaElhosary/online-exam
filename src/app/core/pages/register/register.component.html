@@ -1,5 +1,5 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <h3 class="w-full" [ngStyle]="{ color: 'var(--black)',}">Sign up</h3>
+  <h3 class="w-full mb-3" [ngStyle]="{ color: 'var(--black)',}">Sign up</h3>
 
   <input
     type="text"
@@ -136,20 +136,22 @@
     ]"
   ></app-error>
   } }
-  <div class="text-center flex align-content-center justify-content-center">
-    <p class="p-0 m-0">Already have an account?</p>
-    <p-button [routerLink]="['/auth/login']"
-    routerLinkActive="router-link-active" styleClass="p-0 mx-1" [ngStyle]="{ color: '--var(--primary-color)',}" label="Login" [link]="true" />
+  <div class="text-center flex align-content-center justify-content-center mb-5">
+    <p class="p-0 m-0 text-ms">Already have an account?</p>
+    <a [routerLink]="['/auth/login']"
+    routerLinkActive="router-link-active" class="px-1"    >Login</a>
   </div>
 
-  <p-button
+  <!-- <p-button
     class="w-full block my-3"
     [style]="{ width: '100%' }"
     type="submit"
     label="Create Account"
     [rounded]="true"
     [disabled]="registerForm.invalid"
-  />
+  /> -->
+  <button  [disabled]="registerForm.invalid" class="btn-start text-white-alpha-90 py-3" type="submit"  >Create Account</button>
+
   @if(backendError){
   <app-error [errorMessages]="[backendError]"></app-error>
   }

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
@@ -9,6 +9,7 @@ import { ErrorComponent } from '../../../shared/components/ui/error/error.compon
 import { Router, RouterModule } from '@angular/router';
 import { RegisterDTO } from '../../../../../dist/auth-api/lib/interfaces/register.dto';
 import { RegisterAdapterRes } from '../../../../../dist/auth-api/lib/interfaces/registerRes.dto';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -25,9 +26,11 @@ import { RegisterAdapterRes } from '../../../../../dist/auth-api/lib/interfaces/
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent implements OnInit ,OnDestroy{
+  private subscription = new Subscription();
 
   constructor(private _authApiService: AuthApiService,private _router:Router) {}
+ 
   backendError:string|undefined|null='';
 
   registerForm = new FormGroup({
@@ -41,7 +44,7 @@ export class RegisterComponent implements OnInit {
   });
   ngOnInit(): void {}
   onSubmit() {
-    this._authApiService.register(this.registerForm.value as RegisterDTO).subscribe({
+ const sub=   this._authApiService.register(this.registerForm.value as RegisterDTO).subscribe({
       next: (res:RegisterAdapterRes) => {
         
         console.log(res);
@@ -56,5 +59,12 @@ export class RegisterComponent implements OnInit {
         
     });
     console.warn(this.registerForm.value);
+
+    this.subscription.add(sub);
+
+  }
+
+  ngOnDestroy(): void {
+   this.subscription.unsubscribe();
   }
 }

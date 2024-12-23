@@ -1,4 +1,4 @@
- import { LoginAdapterRes } from './../../../../../dist/auth-api/lib/interfaces/loginRes.dto.d';
+import { LoginAdapterRes } from './../../../../../dist/auth-api/lib/interfaces/loginRes.dto.d';
 import { InputTextModule } from 'primeng/inputtext';
 
 import { Component, OnInit } from '@angular/core';
@@ -17,6 +17,7 @@ import { CommonModule } from '@angular/common';
 import { ErrorComponent } from '../../../shared/components/ui/error/error.component';
 import { Router, RouterModule } from '@angular/router';
 import { TokenService } from '../../services/token.service';
+import { Subject, takeUntil } from 'rxjs';
 
 @Component({
   selector: 'app-login',
@@ -29,12 +30,13 @@ import { TokenService } from '../../services/token.service';
     CommonModule,
     ErrorComponent,
     RouterModule,
-    
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
+  private destroy$ = new Subject<void>();
+
   constructor(
     private _authApiService: AuthApiService,
     private _tokenService: TokenService,
@@ -52,17 +54,24 @@ export class LoginComponent implements OnInit {
   });
   ngOnInit(): void {}
   onSubmit() {
-    this._authApiService.login(this.loginForm.value as LoginDTO).subscribe({
-      next: (res) => {
-        console.log(res);
-        if (res.message == 'success') {
-          this._tokenService.setToken(res.token);
-          this._router.navigate(['/home/quizes']);
-        } else {
-          this.backendError = res.error?.message;
-        }
-      },
-    });
+    this._authApiService
+      .login(this.loginForm.value as LoginDTO)
+      .pipe(takeUntil(this.destroy$))
+      .subscribe({
+        next: (res) => {
+          console.log(res);
+          if (res.message == 'success') {
+            this._tokenService.setToken(res.token);
+            this._router.navigate(['/home/quizes']);
+          } else {
+            this.backendError = res.error?.message;
+          }
+        },
+      });
     console.warn(this.loginForm.value);
+  }
+
+  ngOnDestroy() {
+    this.destroy$.complete(); // Completes the subject
   }
 }

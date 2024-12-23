@@ -22,14 +22,21 @@
 .p-button .p-button-label {
   transition-duration: 0.2s;
   text-align: start;
-  margin-left: 2rem !important;
+ // margin-left: 2rem !important;
   padding: 1.3rem !important;
 }
 
+// .p-inputtext {
+//   margin: 0;
+// }
 .p-inputtext {
-  margin: 0;
+  padding: 15px;
 }
-
+.p-input-icon-left > i, .p-input-icon-left > .p-icon-wrapper, .p-input-icon-right > i, .p-input-icon-right > .p-icon-wrapper {
+  position: absolute;
+  top: 50%;
+  margin-top: -0.5rem !important;
+}
 .p-icon-field-left > .p-inputtext {
   padding-left: 2.5rem !important;
   padding-bottom: 0.5rem !important;
@@ -54,4 +61,10 @@
 button[_ngcontent-ng-c3261789061] {
   width: auto;
   margin: 15px 15px 15px 0px;
+}
+.btn-start {
+  background-color: var(--blue-color);
+  border-radius: 10px;
+  padding: 4px 24px;
+  border: 0;
 }

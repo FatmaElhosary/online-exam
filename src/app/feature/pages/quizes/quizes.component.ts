@@ -4,6 +4,7 @@ import { SubjectsService } from '../../services/subjects.service';
 import { Subject } from '../../services/interfaces/subjects.adapter.res';
 import { ScrollingModule } from '@angular/cdk/scrolling';
 import { RouterModule,     } from '@angular/router';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-quizes',
@@ -13,7 +14,7 @@ import { RouterModule,     } from '@angular/router';
   styleUrl: './quizes.component.scss',
 })
 export class QuizesComponent implements OnInit {
-  sub: any[] = [];
+  subs: Subscription[] = [];
   subjects: Subject[] = [];
   errorMessage: string | null = null;
 
@@ -30,9 +31,9 @@ export class QuizesComponent implements OnInit {
         this.errorMessage = res.err?.message ?? null;
       },
     });
-    this.sub.push(sub1);
+    this.subs.push(sub1);
   }
   ngOnDestroy(): void {
-    this.sub[0].unsubscribe();
+    this.subs.forEach(sub=>sub.unsubscribe());
   }
 }

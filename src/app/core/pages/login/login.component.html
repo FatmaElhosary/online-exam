@@ -1,5 +1,5 @@
 <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-  <h3 class="w-full" [ngStyle]="{ color: 'var(--black)',}">Sign in</h3>
+  <h3 class="w-full mb-3" [ngStyle]="{ color: 'var(--black)',}">Sign in</h3>
   <input
     type="text"
     pInputText
@@ -45,14 +45,15 @@
     [link]="true"
   />
 
-  <p-button
+  <!-- <p-button
     class="w-full block my-3"
     [style]="{ width: '100%' }"
     type="submit"
     label="Sign in"
     [rounded]="true"
     [disabled]="loginForm.invalid"
-  />
+  /> -->
+  <button  [disabled]="loginForm.invalid" class="btn-start text-white-alpha-90 py-3" type="submit"  >Sign in</button>
   @if(backendError){
     <app-error [errorMessages]="[backendError]"></app-error>
   }

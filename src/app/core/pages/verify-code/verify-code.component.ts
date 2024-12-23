@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnDestroy } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { AuthApiService } from 'auth-api';
@@ -8,6 +8,7 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ErrorComponent } from '../../../shared/components/ui/error/error.component';
 import { VerifyCodeDTO } from '../../../../../dist/auth-api/lib/interfaces/verifyCode.dto';
 import { ResetPasswordDTO } from '../../../../../dist/auth-api/lib/interfaces/resetPassword.dto';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-verify-code',
   standalone: true,
@@ -17,7 +18,9 @@ import { ResetPasswordDTO } from '../../../../../dist/auth-api/lib/interfaces/re
   templateUrl: './verify-code.component.html',
   styleUrl: './verify-code.component.scss'
 })
-export class VerifyCodeComponent {
+export class VerifyCodeComponent implements OnDestroy {
+    private subscription = new Subscription();
+  
   constructor(
     private _authApiService: AuthApiService,
     private _router: Router,
@@ -33,7 +36,7 @@ export class VerifyCodeComponent {
 
   }
   onSubmit() {
-    this._authApiService
+  const sub=this._authApiService
       .verifyCode(this.verifyCodeForm.value as VerifyCodeDTO)
       .subscribe({
         next: (res:any) => {
@@ -46,6 +49,7 @@ export class VerifyCodeComponent {
         },
       });
     console.warn(this.verifyCodeForm.value);
+    this.subscription.add(sub);
   }
 
   resendCode(){
@@ -59,5 +63,8 @@ export class VerifyCodeComponent {
     //     }
     //   },
     // });
+  }
+  ngOnDestroy(): void {
+    this.subscription.unsubscribe();
   }
 }
