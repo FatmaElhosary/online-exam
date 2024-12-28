@@ -1,1 +1,22 @@
-<p>question-dialog works!</p>
+<div class="card flex justify-content-center">
+  <p-dialog
+    resizable="false"
+    header=""
+    [modal]="true"
+    [visible]="visible()"
+    [style]="{ width: '25rem' }"
+    closeOnEscape="false"
+    closable="false"
+    draggable="false"
+    resizable="false"
+    [contentStyle]="{ padding: '24px' }"
+  >
+    <p>Question {{ currentQuestionIndex() + 1 }} of {{ exam().numberOfQuestions }}</p>
+    <app-timer></app-timer>
+    <app-question [question]="currentQuestion"></app-question>
+    <div class="flex ai-between gap-5 mt-5">
+      <button class="btn" (click)="getPreQuestion()">Back</button>
+      <button class="btn" (click)="getNextQuestion()">Next</button>
+    </div>
+  </p-dialog>
+</div>
