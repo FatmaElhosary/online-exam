@@ -61,6 +61,7 @@ export class ExamsComponent {
   }
 
   startExam() {
+    this._dialogStateService.closeDialog();
     console.log('start exam ');
     //open exam modal
     this.questionDialogVisible.set(true);

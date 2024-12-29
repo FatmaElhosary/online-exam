@@ -11,6 +11,8 @@
   --white: #ffffff;
   --light-blue: #f0f4fc;
   --primary-color: #4461f2;
+  --light-gray:#EDEFF3;
+  --green-color:#11CE19;
 }
 * {
   text-decoration: none;
@@ -68,11 +70,10 @@ button[_ngcontent-ng-c3261789061] {
   padding: 4px 24px;
   border: 0;
 }
-.p-dialog  {
-  border-bottom: 0 none;
+
+.p-dialog .p-dialog-content   {
   background: #ffffff;
-  color: #374151;
-  padding: 1.5rem !important;
+  //color: #4b5563;
+  padding: 2rem 1.5rem 2rem 1.5rem;
   border-radius: 20px;
-   
 }
