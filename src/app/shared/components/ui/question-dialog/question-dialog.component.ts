@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import {
   Component,
   Input,
@@ -24,12 +24,11 @@ import { QuestionsService } from '../../../../feature/services/questions.service
   standalone: true,
   imports: [
     ButtonModule,
-    CommonModule,
     DialogModule,
     ProgressBarModule,
     TimerComponent,
-    QuestionComponent,
-  ],
+    QuestionComponent
+],
   templateUrl: './question-dialog.component.html',
   styleUrl: './question-dialog.component.scss',
 })

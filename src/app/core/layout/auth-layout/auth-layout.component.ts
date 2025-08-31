@@ -3,7 +3,7 @@ import { RouterModule } from '@angular/router';
 import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 import { ImageModule } from 'primeng/image';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 import { SelectModule } from 'primeng/select';
 interface Language {
@@ -16,11 +16,10 @@ interface Language {
   imports: [
     RouterModule,
     FormsModule,
-    CommonModule,
     ButtonModule,
     ImageModule,
-    SelectModule,
-  ],
+    SelectModule
+],
   templateUrl: './auth-layout.component.html',
   styleUrl: './auth-layout.component.scss',
 })

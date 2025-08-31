@@ -5,14 +5,14 @@ import { MenubarModule } from 'primeng/menubar';
 import { MenuItem } from 'primeng/api';
 
 import { BadgeModule } from 'primeng/badge';
-import { CommonModule } from '@angular/common';
 import { QuizesComponent } from '../quizes/quizes.component';
 import { NavbarComponent } from '../../../shared/components/ui/navbar/navbar.component';
+ import { RouterModule } from '@angular/router';
 @Component({
   selector: 'app-home',
   standalone: true,
   imports: [
-    CommonModule,
+    RouterModule,
     ToolbarModule,
     ButtonModule,
     MenubarModule,

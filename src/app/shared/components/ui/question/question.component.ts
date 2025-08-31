@@ -8,13 +8,13 @@ import {
 } from '@angular/core';
 import { Question } from '../../../../feature/services/interfaces/questions.adapter.res';
 import { RadioButtonModule } from 'primeng/radiobutton';
-import { CommonModule } from '@angular/common';
+
 import { FormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-question',
   standalone: true,
-  imports: [RadioButtonModule, CommonModule, FormsModule],
+  imports: [RadioButtonModule, FormsModule],
   templateUrl: './question.component.html',
   styleUrl: './question.component.scss',
 })

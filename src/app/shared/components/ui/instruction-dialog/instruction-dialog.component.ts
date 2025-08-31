@@ -10,13 +10,13 @@ import {
 } from '@angular/core';
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
-import { CommonModule } from '@angular/common';
+
 import { DialogStateService } from '../../../../feature/services/dialog-state.service';
 
 @Component({
   selector: 'app-instruction-dialog',
   standalone: true,
-  imports: [DialogModule, ButtonModule, CommonModule],
+  imports: [DialogModule, ButtonModule],
   templateUrl: './instruction-dialog.component.html',
   styleUrl: './instruction-dialog.component.scss',
 })
