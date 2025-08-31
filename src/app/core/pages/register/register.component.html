@@ -46,7 +46,11 @@
     formControlName="lastName"
     placeholder="lastName"
     class="w-full block mb-3"
-    [ngClass]="{ 'ng-invalid ng-dirty': !registerForm.controls.lastName.valid && registerForm.controls['lastName'].touched  }"
+    [ngClass]="{
+      'ng-invalid ng-dirty':
+        !registerForm.controls.lastName.valid &&
+        registerForm.controls['lastName'].touched
+    }"
   />
   @if(registerForm.controls['lastName'].invalid &&
   registerForm.controls['lastName'].touched ){
@@ -116,7 +120,6 @@
   ></app-error>
   } }
 
-  
   <input
     type="text"
     pInputText
@@ -130,16 +133,18 @@
   @if(registerForm.get('phone')?.errors?.['required']){
   <app-error [errorMessages]="['phone is required']"></app-error>
   } @if(registerForm.get('phone')?.errors?.['pattern']){
-  <app-error
-    [errorMessages]="[
-      'phone should be Numbers'
-    ]"
-  ></app-error>
+  <app-error [errorMessages]="['phone should be Numbers']"></app-error>
   } }
-  <div class="text-center flex align-content-center justify-content-center mb-5">
+  <div
+    class="text-center flex align-content-center justify-content-center mb-5"
+  >
     <p class="p-0 m-0 text-ms">Already have an account?</p>
-    <a [routerLink]="['/auth/login']"
-    routerLinkActive="router-link-active" class="px-1"    >Login</a>
+    <a
+      [routerLink]="['/auth/login']"
+      routerLinkActive="router-link-active"
+      class="px-1"
+      >Login</a
+    >
   </div>
 
   <!-- <p-button
@@ -150,7 +155,13 @@
     [rounded]="true"
     [disabled]="registerForm.invalid"
   /> -->
-  <button  [disabled]="registerForm.invalid" class="btn-start text-white-alpha-90 py-3" type="submit"  >Create Account</button>
+  <button
+    [disabled]="registerForm.invalid"
+    class="btn-start text-white-alpha-90 py-3"
+    type="submit"
+  >
+    Create Account
+  </button>
 
   @if(backendError){
   <app-error [errorMessages]="[backendError]"></app-error>

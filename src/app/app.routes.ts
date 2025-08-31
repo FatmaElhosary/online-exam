@@ -11,6 +11,11 @@ export const routes: Routes = [
       ),
     children: [
       {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full',
+      },
+      {
         path: 'login',
         loadComponent: () =>
           import('./core/pages/login/login.component').then(
@@ -49,36 +54,36 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-    
+
     loadComponent: () =>
       import('./feature/pages/home/home.component').then(
         (e) => e.HomeComponent
       ),
-      children: [
-        {
-          path: '',
-          redirectTo: '/home/quizes', pathMatch: 'full'
-        },
-        {
-          path: 'quizes',
-          loadComponent: () =>
-            import('./feature/pages/quizes/quizes.component').then(
-              (e) => e.QuizesComponent
-            ),
-        },
-        {
-          path: 'exams/:examId',
-          loadComponent: () =>
-            import('./feature/pages/exams/exams.component').then(
-              (e) => e.ExamsComponent
-            ),
-        },
-      ],
+    children: [
+      {
+        path: '',
+        redirectTo: '/home/quizes',
+        pathMatch: 'full',
+      },
+      {
+        path: 'quizes',
+        loadComponent: () =>
+          import('./feature/pages/quizes/quizes.component').then(
+            (e) => e.QuizesComponent
+          ),
+      },
+      {
+        path: 'exams/:examId',
+        loadComponent: () =>
+          import('./feature/pages/exams/exams.component').then(
+            (e) => e.ExamsComponent
+          ),
+      },
+    ],
   },
   {
     path: '',
-    redirectTo: '/home/quizes', pathMatch: 'full'
+    redirectTo: '/auth/login',
+    pathMatch: 'full',
   },
-
-  
 ];

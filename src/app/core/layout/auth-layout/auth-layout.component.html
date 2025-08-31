@@ -1,34 +1,46 @@
-<div class="grid grid-nogutter h-full">
-  <div class="col-12 md:col-6 right-part">
-    <h1 [ngStyle]="{ color: 'var( --black)' }">Welcome to</h1>
-    <h1>Elevate</h1>
-    <p>Quidem autem voluptatibus qui quaerat aspernatur architecto natus</p>
-    <!-- <img src="assets/images/bro.svg" alt="" /> -->
-    <div class="card flex justify-content-start">
+<div class="flex flex-col md:flex-row h-screen auth-layout">
+  <div class="right-part flex-1 rounded-e-[100px]">
+    <div class="font-Poppins m-5 flex flex-col gap-3 w-9">
+      <h1 class="text-black text-5xl font-bold">Welcome to</h1>
+      <h1 class="text-5xl text-(--primary-color) font-bold">Elevate</h1>
+      <p class="mb-8 text-lg font-poppins font-normal break-normal">
+        Quidem autem voluptatibus qui quaerat aspernatur architecto natus
+      </p>
+
       <p-image
         src="assets/images/bro.svg"
         alt="Image"
-        width="408"
+        width="300"
         height="434.59"
-        [imageStyle]="{ 'max-width': '75%' }"
       />
     </div>
   </div>
-  <div class="col-12 md:col-6">
-    <div class="card flex flex-wrap gap-1 justify-content-end">
+  <div class="flex-1 pt-5">
+    <div class="flex items-center justify-content-end gap-2 w-full p-5">
+      <p-select
+        [options]="languages"
+        [(ngModel)]="selectedLang"
+        optionLabel="language"
+        placeholder="Select a language"
+        class="w-full md:w-56"
+      />
+
       <p-button
         [routerLink]="['/auth/login']"
         routerLinkActive="router-link-active"
         [text]="true"
         label="Sign in"
+        class="py-2 px-4 rounded-2xl border-[#E0E0E9] color-[#4461F2]"
       />
       <p-button
         label="Register"
+        routerLinkActive="router-link-active"
         [text]="true"
         [routerLink]="['/auth/register']"
+        class="py-2 px-4 rounded-2xl"
       />
     </div>
-    <div class="flex align-items-center justify-content-center h-full">
+    <div class="flex items-center mt-8">
       <router-outlet></router-outlet>
     </div>
   </div>

@@ -1,7 +1,10 @@
-h1{
-    color:var( --dark-blue);
-}
-.right-part{
+.auth-layout {
+  .right-part {
     background-color: var(--light-blue);
-   //height: 100vh;
+    box-shadow: 0px 5px 100px 0px #0000001a;
+  }
+}
+.router-link-active {
+  border: 1px solid #e0e0e9;
+  box-shadow: 0px 10px 30px 0px #4461f20d;
 }

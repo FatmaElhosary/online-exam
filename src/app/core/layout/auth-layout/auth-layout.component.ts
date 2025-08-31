@@ -4,27 +4,32 @@ import { ToolbarModule } from 'primeng/toolbar';
 import { ButtonModule } from 'primeng/button';
 import { ImageModule } from 'primeng/image';
 import { CommonModule } from '@angular/common';
-import { DropdownModule } from 'primeng/dropdown';
 import { FormsModule } from '@angular/forms';
+import { SelectModule } from 'primeng/select';
+interface Language {
+  id: string;
+  language: string;
+}
 @Component({
   selector: 'app-auth-layout',
   standalone: true,
-  imports: [RouterModule,
-    
-    FormsModule,CommonModule,ToolbarModule,ButtonModule,ImageModule,DropdownModule],
+  imports: [
+    RouterModule,
+    FormsModule,
+    CommonModule,
+    ButtonModule,
+    ImageModule,
+    SelectModule,
+  ],
   templateUrl: './auth-layout.component.html',
   styleUrl: './auth-layout.component.scss',
-
 })
 export class AuthLayoutComponent {
-  languages: string[] =[
-    'English',
-    'Arabic'
-];;
+  languages: Language[] = [
+    { id: '1', language: 'English' },
+    { id: '2', language: 'Arabic' },
+  ];
+  selectedLang: Language | undefined;
 
-  selectedLang: string ='English';
-
-  ngOnInit() {
-   
-  }
+  ngOnInit() {}
 }

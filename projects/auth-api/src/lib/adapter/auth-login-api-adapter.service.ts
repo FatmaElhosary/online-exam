@@ -13,7 +13,7 @@ export class AuthLoginApiAdapter implements Adapter {
       message: data.message,
       token: data.token,
       userEmail: data.user.email,
-     error: data.error,
+      error: data.error,
     };
   }
 }

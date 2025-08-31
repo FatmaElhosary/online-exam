@@ -1,6 +1,4 @@
-import { LoginAdapterRes } from './../../../../../dist/auth-api/lib/interfaces/loginRes.dto.d';
 import { InputTextModule } from 'primeng/inputtext';
-
 import { Component, OnInit } from '@angular/core';
 import {
   FormControl,

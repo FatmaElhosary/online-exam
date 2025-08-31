@@ -5,8 +5,8 @@
     pInputText
     formControlName="email"
     placeholder="email"
-    class="w-full block mb-3"
-    [ngClass]="{ 'ng-invalid ng-dirty': !loginForm.controls.email.valid }"
+    class="w-full   mb-3"
+    [class]="{ 'ng-invalid ng-dirty': !loginForm.controls.email.valid }"
   />
   @if(loginForm.controls['email'].invalid && loginForm.controls['email'].touched
   ){
@@ -18,7 +18,7 @@
     }
   }
   <p-password
-    [ngClass]="{ 'ng-invalid ng-dirty': !loginForm.controls.password.valid }"
+    [class]="{ 'ng-invalid ng-dirty': !loginForm.controls.password.valid }"
     class="w-full block mb-3"
     inputStyleClass="w-full"
     [style]="{ width: '100%' }"

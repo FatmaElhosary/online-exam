@@ -3,7 +3,7 @@ import { Subscription } from 'rxjs';
 import { Exam } from './../../services/interfaces/exams.adapter.res';
 import { ExamsService } from './../../services/exams.service';
 import { Component, Input, signal, WritableSignal } from '@angular/core';
-import { ActivatedRoute, RouterOutlet } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { NavbarComponent } from '../../../shared/components/ui/navbar/navbar.component';
 import { ExamComponent } from '../../../shared/components/exam/exam.component';
 import { ButtonModule } from 'primeng/button';

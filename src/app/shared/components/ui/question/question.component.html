@@ -4,7 +4,7 @@
 @for(answer of question().answers;track answer){
 <div class="p-field-radiobutton">
   <p-radioButton
-    [name]="answer.key"
+    [name]="answer.answer.toString()"
     [value]="answer.answer"
     [(ngModel)]="answer.key"
     [inputId]="answer.key "
