@@ -1,4 +1,4 @@
-import { Inject, Injectable } from '@angular/core';
+import { inject, Inject, Injectable } from '@angular/core';
 import { AuthApiInterface } from './base/authApi';
 import { catchError, map, Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
@@ -26,8 +26,9 @@ import { BASEURL } from './base-url-injection';
   providedIn: 'root',
 })
 export class AuthApiService implements AuthApiInterface {
+  baseUrl = inject(BASEURL);
   constructor(
-    @Inject(BASEURL) private baseUrl: string,
+    // @Inject(BASEURL) private baseUrl: string,
     private _httpClient: HttpClient,
     private _authLoginApiAdapter: AuthLoginApiAdapter,
     private _authRegisterAdapterer: AuthRegisterAdapterer,

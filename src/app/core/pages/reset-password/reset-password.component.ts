@@ -12,8 +12,8 @@ import { ErrorComponent } from '../../../shared/components/ui/error/error.compon
 import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
-import { ResetPasswordDTO } from '../../../../../dist/auth-api/lib/interfaces/resetPassword.dto';
-import { Subscription } from 'rxjs';
+ import { Subscription } from 'rxjs';
+import { ResetPasswordDTO } from '../../../../../projects/auth-api/src/lib/interfaces/resetPassword.dto';
 
 @Component({
   selector: 'app-reset-password',

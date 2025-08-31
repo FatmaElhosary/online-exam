@@ -10,12 +10,12 @@ import { PasswordModule } from 'primeng/password';
 import { ButtonModule } from 'primeng/button';
 import { AuthApiService } from 'auth-api';
 
-import { LoginDTO } from '../../../../../dist/auth-api/lib/interfaces/login.dto';
-import { CommonModule } from '@angular/common';
+ import { CommonModule } from '@angular/common';
 import { ErrorComponent } from '../../../shared/components/ui/error/error.component';
 import { Router, RouterModule } from '@angular/router';
 import { TokenService } from '../../services/token.service';
 import { Subject, takeUntil } from 'rxjs';
+import { LoginDTO } from '../../../../../projects/auth-api/src/lib/interfaces/login.dto';
 
 @Component({
   selector: 'app-login',

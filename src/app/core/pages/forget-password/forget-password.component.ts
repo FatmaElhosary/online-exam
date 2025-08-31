@@ -12,8 +12,8 @@ import { AuthApiService } from 'auth-api';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ErrorComponent } from '../../../shared/components/ui/error/error.component';
-import { ForgetPasswordDTO } from '../../../../../dist/auth-api/lib/interfaces/forgetPassword.dto';
-import { Subscription } from 'rxjs';
+ import { Subscription } from 'rxjs';
+import { ForgetPasswordDTO } from '../../../../../projects/auth-api/src/lib/interfaces/forgetPassword.dto';
 @Component({
   selector: 'app-forget-password',
   standalone: true,

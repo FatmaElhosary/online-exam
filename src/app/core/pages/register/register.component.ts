@@ -12,9 +12,10 @@ import {
 import { CommonModule } from '@angular/common';
 import { ErrorComponent } from '../../../shared/components/ui/error/error.component';
 import { Router, RouterModule } from '@angular/router';
-import { RegisterDTO } from '../../../../../dist/auth-api/lib/interfaces/register.dto';
-import { RegisterAdapterRes } from '../../../../../dist/auth-api/lib/interfaces/registerRes.dto';
+ 
 import { Subscription } from 'rxjs';
+import { RegisterDTO } from '../../../../../projects/auth-api/src/lib/interfaces/register.dto';
+import { RegisterAdapterRes } from '../../../../../projects/auth-api/src/lib/interfaces/registerRes.dto';
 @Component({
   selector: 'app-register',
   standalone: true,

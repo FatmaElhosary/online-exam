@@ -6,9 +6,9 @@ import { AuthApiService } from 'auth-api';
 import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
 import { ErrorComponent } from '../../../shared/components/ui/error/error.component';
-import { VerifyCodeDTO } from '../../../../../dist/auth-api/lib/interfaces/verifyCode.dto';
-import { ResetPasswordDTO } from '../../../../../dist/auth-api/lib/interfaces/resetPassword.dto';
+ 
 import { Subscription } from 'rxjs';
+import { VerifyCodeDTO } from '../../../../../projects/auth-api/src/lib/interfaces/verifyCode.dto';
 @Component({
   selector: 'app-verify-code',
   standalone: true,
