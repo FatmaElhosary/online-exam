@@ -1,0 +1,51 @@
+<div class="flex flex-col gap-1 pb-5">
+  @if(fieldName=='password'){
+  <p-password
+    inputStyleClass="w-full"
+    [toggleMask]="true"
+    [feedback]="false"
+    [id]="id"
+    [placeholder]="placeholder"
+    [formControl]="control"
+    [invalid]="isInvalid(control)"
+  />
+  } @else {
+  <input
+    pInputText
+    [type]="type"
+    [id]="id"
+    [placeholder]="placeholder"
+    [formControl]="control"
+    [invalid]="isInvalid(control)"
+  />
+  }
+
+  <!-- Validation  -->
+
+  @if (isInvalid(control)) { @if (control.errors?.['required']) {
+  <app-error
+    [errorMessages]="[
+      `${ fieldName } is required.`
+    ]"
+  ></app-error>
+  } @if (control.errors?.['email']) {
+  <app-error
+    [errorMessages]="[
+      ` Please enter a valid ${ fieldName }.`
+    ]"
+  ></app-error>
+  } @if(control.errors?.['pattern'] ){ @if(
+  fieldName?.toLowerCase()=='password'){
+  <app-error
+    [errorMessages]="[
+      'password length should be at min 6 chars . With upper case letter and a number at least with special character'
+    ]"
+  ></app-error>
+  } @else {
+  <app-error
+    [errorMessages]="[
+      `Invalid ${fieldName} format`
+    ]"
+  ></app-error>
+  } } }
+</div>

@@ -1,12 +1,13 @@
-<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-  <h3 class="w-full mb-3" [ngStyle]="{ color: 'var(--black)',}">Sign up</h3>
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="w-sm m-0">
+  <h3 class="text-title" [ngStyle]="{ color: 'var(--black)',}">Sign up</h3>
 
   <input
     type="text"
     pInputText
     formControlName="username"
     placeholder="username"
-    class="w-full block mb-3"
+    class="w-full mb-3"
+    [invalid]="isInvalid('username')"
     [ngClass]="{ 'ng-invalid ng-dirty': !registerForm.controls.username.valid }"
   />
   @if(registerForm.controls['username'].invalid &&
@@ -26,9 +27,11 @@
     pInputText
     formControlName="firstName"
     placeholder="firstName"
-    class="w-full block mb-3"
-    [ngClass]="{
-      'ng-invalid ng-dirty': !registerForm.controls.firstName.valid
+    class="w-full mb-3"
+    [class]="{
+      'ng-invalid ng-dirty':
+        !registerForm.controls.firstName.valid &&
+        registerForm.controls['firstName'].touched
     }"
   />
   @if(registerForm.controls['firstName'].invalid &&
@@ -135,10 +138,8 @@
   } @if(registerForm.get('phone')?.errors?.['pattern']){
   <app-error [errorMessages]="['phone should be Numbers']"></app-error>
   } }
-  <div
-    class="text-center flex align-content-center justify-content-center mb-5"
-  >
-    <p class="p-0 m-0 text-ms">Already have an account?</p>
+  <div class="text-center flex items-center justify-center mb-5">
+    <p class="p-0 m-0 text-black">Already have an account?</p>
     <a
       [routerLink]="['/auth/login']"
       routerLinkActive="router-link-active"
@@ -155,14 +156,11 @@
     [rounded]="true"
     [disabled]="registerForm.invalid"
   /> -->
-  <button
+  <app-primary-button
+    [labelText]="'Create Account'"
     [disabled]="registerForm.invalid"
-    class="btn-start text-white-alpha-90 py-3"
-    type="submit"
-  >
-    Create Account
-  </button>
-
+    [type]="'submit'"
+  />
   @if(backendError){
   <app-error [errorMessages]="[backendError]"></app-error>
   }

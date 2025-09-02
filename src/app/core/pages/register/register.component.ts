@@ -12,10 +12,11 @@ import {
 import { CommonModule } from '@angular/common';
 import { ErrorComponent } from '../../../shared/components/ui/error/error.component';
 import { Router, RouterModule } from '@angular/router';
- 
+
 import { Subscription } from 'rxjs';
 import { RegisterDTO } from '../../../../../projects/auth-api/src/lib/interfaces/register.dto';
 import { RegisterAdapterRes } from '../../../../../projects/auth-api/src/lib/interfaces/registerRes.dto';
+import { PrimaryButtonComponent } from '../../../shared/components/ui/primary-button/primary-button.component';
 @Component({
   selector: 'app-register',
   standalone: true,
@@ -28,6 +29,7 @@ import { RegisterAdapterRes } from '../../../../../projects/auth-api/src/lib/int
     CommonModule,
     ErrorComponent,
     RouterModule,
+    PrimaryButtonComponent,
   ],
   templateUrl: './register.component.html',
   styleUrl: './register.component.scss',
@@ -87,6 +89,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
     this.subscription.add(sub);
   }
 
+  isInvalid(controlName: string) {
+    const control = this.registerForm.get(controlName);
+    return control?.invalid && control.touched;
+  }
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }

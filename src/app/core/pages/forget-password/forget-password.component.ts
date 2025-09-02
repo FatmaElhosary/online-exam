@@ -14,6 +14,7 @@ import { CommonModule } from '@angular/common';
 import { ErrorComponent } from '../../../shared/components/ui/error/error.component';
  import { Subscription } from 'rxjs';
 import { ForgetPasswordDTO } from '../../../../../projects/auth-api/src/lib/interfaces/forgetPassword.dto';
+import { PrimaryButtonComponent } from "../../../shared/components/ui/primary-button/primary-button.component";
 @Component({
   selector: 'app-forget-password',
   standalone: true,
@@ -23,7 +24,8 @@ import { ForgetPasswordDTO } from '../../../../../projects/auth-api/src/lib/inte
     ReactiveFormsModule,
     CommonModule,
     ErrorComponent,
-  ],
+    PrimaryButtonComponent
+],
   templateUrl: './forget-password.component.html',
   styleUrl: './forget-password.component.scss',
 })

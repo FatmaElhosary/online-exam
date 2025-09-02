@@ -14,6 +14,7 @@ import { ButtonModule } from 'primeng/button';
 import { InputTextModule } from 'primeng/inputtext';
  import { Subscription } from 'rxjs';
 import { ResetPasswordDTO } from '../../../../../projects/auth-api/src/lib/interfaces/resetPassword.dto';
+import { PrimaryButtonComponent } from "../../../shared/components/ui/primary-button/primary-button.component";
 
 @Component({
   selector: 'app-reset-password',
@@ -25,7 +26,8 @@ import { ResetPasswordDTO } from '../../../../../projects/auth-api/src/lib/inter
     ButtonModule,
     InputTextModule,
     ReactiveFormsModule,
-  ],
+    PrimaryButtonComponent
+],
   templateUrl: './reset-password.component.html',
   styleUrl: './reset-password.component.scss',
 })

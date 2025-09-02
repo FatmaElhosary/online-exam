@@ -9,12 +9,11 @@ import { ErrorComponent } from '../../../shared/components/ui/error/error.compon
  
 import { Subscription } from 'rxjs';
 import { VerifyCodeDTO } from '../../../../../projects/auth-api/src/lib/interfaces/verifyCode.dto';
+import { PrimaryButtonComponent } from "../../../shared/components/ui/primary-button/primary-button.component";
 @Component({
   selector: 'app-verify-code',
   standalone: true,
-  imports: [ButtonModule,InputTextModule,CommonModule,ReactiveFormsModule,ErrorComponent,
-    
-  ],
+  imports: [ButtonModule, InputTextModule, CommonModule, ReactiveFormsModule, ErrorComponent, PrimaryButtonComponent],
   templateUrl: './verify-code.component.html',
   styleUrl: './verify-code.component.scss'
 })

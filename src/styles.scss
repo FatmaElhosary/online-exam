@@ -1,13 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
-// @import "primeng/resources/themes/lara-light-blue/theme.css";
-// @import "primeng/resources/primeng.css";
-///@import "primeicons/primeicons.css";
-@import "tailwindcss";
-@plugin "tailwindcss-primeui";
+@use "tailwindcss";
+// @plugin "tailwindcss-primeui";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
 
 :root {
-  --blue-color: #4461f2;
   --dark-blue: #122d9c;
   --black: #000000;
   --white: #ffffff;
@@ -15,19 +11,47 @@
   --primary-color: #4461f2;
   --light-gray: #edeff3;
   --green-color: #11ce19;
+  --gray-text:#6C737F;
+   --p-divider-border-color:#6C737F !important;
+   --my-border:#E0E0E9;
 }
-* {
+html,body {
   text-decoration: none;
-  font-family: "Poppins";
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+//  background-color: #ffffff;
+  // font-family: "Poppins";
+  // margin: 0;
+  // padding: 0;
+  // box-sizing: border-box;
+}
+a {
+  color: var(--primary-color) !important;
 }
 
+@font-face {
+  font-family: Poppins;
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+  src: url("assets/fonts/Poppins-Regular.ttf") format("ttf");
+}
+@font-face {
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 200 700;
+  font-display: swap;
+  src: url("assets/fonts/Inter-VariableFont_opsz,wght.ttf")  ;
+}
 @theme {
-  --font-poppins: Poppins, sans-serif;
+  --font-poppins: "Poppins", sans-serif;
+  --font-inter:"Inter",
   --color-primary-blue: #4461f2;
 }
+@layer components {
+  .text-title {
+    @apply w-full mb-3 font-inter text-2xl font-bold text-black;
+  }
+}
+
 // .p-button .p-button-label {
 //   transition-duration: 0.2s;
 //   text-align: start;

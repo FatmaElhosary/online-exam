@@ -1,40 +1,47 @@
-<form [formGroup]="verifyCodeForm" (ngSubmit)="onSubmit()">
-    <h3 class="w-full" [ngStyle]="{ color: 'var(--black)',}">Verify code</h3>
-    <input
-      type="text"
-      pInputText
-      formControlName="resetCode"
-      placeholder="resetCode"
-      class="w-full block mb-3"
-      [ngClass]="{ 'ng-invalid ng-dirty': !verifyCodeForm.controls.resetCode.valid }"
-    />
-    @if(verifyCodeForm.controls['resetCode'].invalid && verifyCodeForm.controls['resetCode'].touched
-    ){
-      @if(verifyCodeForm.get('resetCode')?.errors?.['required']){
-        <app-error [errorMessages]="['resetCode is required']"></app-error>
-      }
-      @if(verifyCodeForm.get('resetCode')?.errors?.['resetCode']){
-        <app-error [errorMessages]="['resetCode not valid']"></app-error>
-      }
-    }
-   
-   
-    <div class="text-center flex align-content-end justify-content-end">
-      <p class="p-0 m-0">Didn’t receive a code? </p>
-      <p-button 
+<form [formGroup]="verifyCodeForm" (ngSubmit)="onSubmit()" class="w-sm m-0">
+  <h3 class="text-title">Verify code</h3>
+  <input
+    type="text"
+    pInputText
+    formControlName="resetCode"
+    placeholder="resetCode"
+    class="w-full block mb-3"
+    [ngClass]="{
+      'ng-invalid ng-dirty': !verifyCodeForm.controls.resetCode.valid
+    }"
+  />
+  @if(verifyCodeForm.controls['resetCode'].invalid &&
+  verifyCodeForm.controls['resetCode'].touched ){
+  @if(verifyCodeForm.get('resetCode')?.errors?.['required']){
+  <app-error [errorMessages]="['resetCode is required']"></app-error>
+  } @if(verifyCodeForm.get('resetCode')?.errors?.['resetCode']){
+  <app-error [errorMessages]="['resetCode not valid']"></app-error>
+  } }
+
+  <div class="text-center flex items-center justify-end mb-5">
+    <p class="p-0 m-0 text-black">Didn’t receive a code?</p>
+    <a
       (onClick)="resendCode()"
-      routerLinkActive="router-link-active" styleClass="p-0 mx-1" [ngStyle]="{ color: '--var(--primary-color)',}" label="Resend" [link]="true" />
-    </div>
-    <p-button
-      class="w-full block my-3"
-      [style]="{ width: '100%' }"
-      type="submit"
-      label="Recover Password"
-      [rounded]="true"
-      [disabled]="verifyCodeForm.invalid"
-    />
-    @if(backendError){
-      <app-error [errorMessages]="[backendError]"></app-error>
-    }
-  </form>
-  
+      routerLinkActive="router-link-active"
+      class="p-0"
+      >Resend</a
+    >
+  </div>
+  <!-- <p-button
+    class="w-full block my-3"
+    [style]="{ width: '100%' }"
+    type="submit"
+    label="Recover Password"
+    [rounded]="true"
+    [disabled]="verifyCodeForm.invalid"
+  /> -->
+
+  <app-primary-button
+    [labelText]="'Verify'"
+    [disabled]="verifyCodeForm.invalid"
+    [type]="'submit'"
+  />
+  @if(backendError){
+  <app-error [errorMessages]="[backendError]"></app-error>
+  }
+</form>
