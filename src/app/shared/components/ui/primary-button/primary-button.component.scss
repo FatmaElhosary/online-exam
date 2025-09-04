@@ -1,6 +1,9 @@
 .p-button {
   color: var(--white);
   background: var(--primary-color);
+  border-radius: 20px;
+  padding-left:  30px;
+  padding-right: 30px;
 }
 .p-button:not(:disabled):hover {
   color: var(--white);

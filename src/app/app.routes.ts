@@ -9,11 +9,11 @@ export const routes: Routes = [
         (c) => c.AuthLayoutComponent
       ),
     children: [
-      {
-        path: '',
-        redirectTo: 'login',
-        pathMatch: 'full',
-      },
+      // {
+      //   path: '',
+      //   redirectTo: 'login',
+      //   pathMatch: 'full',
+      // },
       {
         path: 'login',
         loadComponent: () =>
@@ -53,7 +53,6 @@ export const routes: Routes = [
   },
   {
     path: 'home',
-
     loadComponent: () =>
       import('./feature/pages/home/home.component').then(
         (e) => e.HomeComponent
@@ -82,7 +81,7 @@ export const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/auth/login',
+    redirectTo: '/home',
     pathMatch: 'full',
   },
 ];

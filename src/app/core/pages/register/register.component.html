@@ -1,16 +1,15 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()" class="w-sm m-0">
-  <h3 class="text-title" [ngStyle]="{ color: 'var(--black)',}">Sign up</h3>
+  <h3 class="text-title">Sign up</h3>
 
-  <input
-    type="text"
-    pInputText
+  <app-global-input
+    [type]="'text'"
     formControlName="username"
-    placeholder="username"
-    class="w-full mb-3"
-    [invalid]="isInvalid('username')"
-    [ngClass]="{ 'ng-invalid ng-dirty': !registerForm.controls.username.valid }"
+    [placeholder]="'username'"
+    [id]="'username'"
+    [control]="userNameControl"
+    [fieldName]="'username'"
   />
-  @if(registerForm.controls['username'].invalid &&
+  <!-- @if(registerForm.controls['username'].invalid &&
   registerForm.controls['username'].touched ){
   @if(registerForm.get('username')?.errors?.['required']){
   <app-error [errorMessages]="['username is required']"></app-error>
@@ -20,21 +19,25 @@
       'username should be character only with minlength: 4 and maxlength: 25'
     ]"
   ></app-error>
-  } }
+  } } -->
 
-  <input
-    type="text"
-    pInputText
+  <app-global-input
+    [type]="'text'"
     formControlName="firstName"
-    placeholder="firstName"
-    class="w-full mb-3"
-    [class]="{
-      'ng-invalid ng-dirty':
-        !registerForm.controls.firstName.valid &&
-        registerForm.controls['firstName'].touched
-    }"
+    [placeholder]="'firstName'"
+    [id]="'firstName'"
+    [control]="firstNameControl"
+    [fieldName]="'firstName'"
   />
-  @if(registerForm.controls['firstName'].invalid &&
+  <app-global-input
+    [type]="'text'"
+    formControlName="lastName"
+    [placeholder]="'lastName'"
+    [id]="'lastName'"
+    [control]="lastNameControl"
+    [fieldName]="'lastName'"
+  />
+  <!-- @if(registerForm.controls['firstName'].invalid &&
   registerForm.controls['firstName'].touched ){
   @if(registerForm.get('firstName')?.errors?.['required']){
   <app-error [errorMessages]="['firstName is required']"></app-error>
@@ -42,8 +45,8 @@
   <app-error
     [errorMessages]="['firstName should be characters only']"
   ></app-error>
-  } }
-  <input
+  } } -->
+  <!-- <input
     type="text"
     pInputText
     formControlName="lastName"
@@ -63,8 +66,8 @@
   <app-error
     [errorMessages]="['lastName should be characters only']"
   ></app-error>
-  } }
-  <input
+  } } -->
+  <!-- <input
     type="text"
     pInputText
     formControlName="email"
@@ -110,8 +113,33 @@
     placeholder="rePassword"
     [feedback]="false"
     formControlName="rePassword"
+  /> -->
+  <app-global-input
+    [type]="'email'"
+    formControlName="email"
+    [placeholder]="'Email'"
+    [id]="'email'"
+    [control]="emailControl"
+    [fieldName]="'email'"
   />
-  @if(registerForm.controls['rePassword'].invalid &&
+  <app-global-input
+    [type]="'password'"
+    formControlName="password"
+    [placeholder]="'Password'"
+    [id]="'password'"
+    [control]="passwordControl"
+    [fieldName]="'password'"
+  />
+  <app-global-input
+    [type]="'password'"
+    formControlName="rePassword"
+    [placeholder]="'Confirm Password'"
+    [id]="'rePassword'"
+    [control]="rePasswordControl"
+    [fieldName]="'Confirm Password'"
+  />
+
+  <!-- @if(registerForm.controls['rePassword'].invalid &&
   registerForm.controls['rePassword'].touched ){
   @if(registerForm.get('rePassword')?.errors?.['required']){
   <app-error [errorMessages]="['rePassword is required']"></app-error>
@@ -121,23 +149,23 @@
       'rePassword length should be at min 6 chars . With upper case letter and a number at least with special character'
     ]"
   ></app-error>
-  } }
+  } } -->
 
-  <input
-    type="text"
-    pInputText
+  <app-global-input
+    [type]="'phone'"
     formControlName="phone"
-    placeholder="phone"
-    class="w-full block mb-3"
-    [ngClass]="{ 'ng-invalid ng-dirty': !registerForm.controls.phone.valid }"
+    [placeholder]="'phone'"
+    [id]="'phone'"
+    [control]="phoneControl"
+    [fieldName]="'phone'"
   />
-  @if(registerForm.controls['phone'].invalid &&
+  <!-- @if(registerForm.controls['phone'].invalid &&
   registerForm.controls['phone'].touched ){
   @if(registerForm.get('phone')?.errors?.['required']){
   <app-error [errorMessages]="['phone is required']"></app-error>
   } @if(registerForm.get('phone')?.errors?.['pattern']){
   <app-error [errorMessages]="['phone should be Numbers']"></app-error>
-  } }
+  } } -->
   <div class="text-center flex items-center justify-center mb-5">
     <p class="p-0 m-0 text-black">Already have an account?</p>
     <a
@@ -148,14 +176,6 @@
     >
   </div>
 
-  <!-- <p-button
-    class="w-full block my-3"
-    [style]="{ width: '100%' }"
-    type="submit"
-    label="Create Account"
-    [rounded]="true"
-    [disabled]="registerForm.invalid"
-  /> -->
   <app-primary-button
     [labelText]="'Create Account'"
     [disabled]="registerForm.invalid"

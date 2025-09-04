@@ -1,22 +1,36 @@
-<div  class="p-4 absolute z-5 w-full bg-white"   >
-    <div class="menu-header ">
-      <img src="assets/images/Logo.svg" alt="Logo" class="logo" />
-      <i class="pi pi-times" style="color: var(--black)" (click)="closeSidebar(true)"></i>
+<div class="sidebar p-4 z-5 bg-white flex flex-col gap-3  w-full ">
+  <div class="menu-header">
+    <img src="assets/images/Logo.svg" alt="Logo" class="w-26" />
+    <i
+      class="pi pi-times inline-flex md:!hidden"
+      (click)="closeSidebar(true)"
+    ></i>
+  </div>
 
-    </div>
-  
-    <div class="menu-item">
-
-      <button pButton pRipple type="button" label="Dashboard" icon="pi pi-th-large" class="p-button-text"></button>
-    </div>
-  
-    <div class="menu-item">
-      <button pButton pRipple type="button" label="Quiz History" icon="pi pi-history" class="p-button-text"></button>
-    </div>
-  
-    <div class="menu-item">
-      <button pButton pRipple type="button" label="Log Out" icon="pi pi-sign-out" class="p-button-text" (click)="logout()"></button>
-    </div>
+  <button
+    [routerLink]="['/home']"
+    routerLinkActive="active"
+    label="Dashboard"
+    icon="pi pi-th-large"
+    class="w-fit rounded-xl"
+    pButton
+  ></button>
+  <button
+    variant="text"
+    class="w-fit rounded-xl"
+    [routerLink]="['/history ']"
+    routerLinkActive="active"
+    label="Quiz History"
+    icon="pi pi-history"
+    pButton
+  ></button>
+  <button
+    variant="text"
+    class="w-fit rounded-xl"
+    routerLinkActive="active"
+    label="Log Out"
+    icon="pi pi-sign-out"
+    pButton
+    (click)="logout()"
+  ></button>
 </div>
-  
-  

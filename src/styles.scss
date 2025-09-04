@@ -2,6 +2,7 @@
 @use "tailwindcss";
 // @plugin "tailwindcss-primeui";
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+@import "primeicons/primeicons.css";
 
 :root {
   --dark-blue: #122d9c;
@@ -14,10 +15,11 @@
   --gray-text:#6C737F;
    --p-divider-border-color:#6C737F !important;
    --my-border:#E0E0E9;
+   --text-color:#696F79;
 }
 html,body {
   text-decoration: none;
-//  background-color: #ffffff;
+//  background-color: #FBF9F9;
   // font-family: "Poppins";
   // margin: 0;
   // padding: 0;

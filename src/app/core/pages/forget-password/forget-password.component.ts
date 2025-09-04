@@ -5,38 +5,37 @@ import {
   Validators,
 } from '@angular/forms';
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { ButtonModule } from 'primeng/button';
-import { InputTextModule } from 'primeng/inputtext';
-
 import { AuthApiService } from 'auth-api';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { ErrorComponent } from '../../../shared/components/ui/error/error.component';
- import { Subscription } from 'rxjs';
+import { Subject, Subscription, takeUntil } from 'rxjs';
 import { ForgetPasswordDTO } from '../../../../../projects/auth-api/src/lib/interfaces/forgetPassword.dto';
-import { PrimaryButtonComponent } from "../../../shared/components/ui/primary-button/primary-button.component";
+import { PrimaryButtonComponent } from '../../../shared/components/ui/primary-button/primary-button.component';
+import { GlobalInputComponent } from '../../../shared/components/ui/global-input/globalInput.component';
 @Component({
   selector: 'app-forget-password',
   standalone: true,
   imports: [
-    InputTextModule,
-    ButtonModule,
     ReactiveFormsModule,
     CommonModule,
     ErrorComponent,
-    PrimaryButtonComponent
-],
+    PrimaryButtonComponent,
+    GlobalInputComponent,
+  ],
   templateUrl: './forget-password.component.html',
   styleUrl: './forget-password.component.scss',
 })
 export class ForgetPasswordComponent implements OnInit, OnDestroy {
-  private subscription = new Subscription();
+  private destroy$ = new Subject<void>();
 
   constructor(
     private _authApiService: AuthApiService,
     private _router: Router
   ) {}
- 
+  get emailControl(): FormControl {
+    return this.forgetPasswordForm.get('email') as FormControl;
+  }
 
   backendError: string | undefined | null = '';
   forgetPasswordForm = new FormGroup({
@@ -44,8 +43,9 @@ export class ForgetPasswordComponent implements OnInit, OnDestroy {
   });
   ngOnInit(): void {}
   onSubmit() {
-    const sub = this._authApiService
+    this._authApiService
       .forgetPassword(this.forgetPasswordForm.value as ForgetPasswordDTO)
+      .pipe(takeUntil(this.destroy$))
       .subscribe({
         next: (res) => {
           console.log(res);
@@ -60,10 +60,9 @@ export class ForgetPasswordComponent implements OnInit, OnDestroy {
         },
       });
     console.warn(this.forgetPasswordForm.value);
-    this.subscription.add(sub);
   }
- 
+
   ngOnDestroy(): void {
-    this.subscription.unsubscribe();
+    this.destroy$.complete();
   }
 }

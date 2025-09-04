@@ -1,19 +1,28 @@
-.menu-header {
-  margin-bottom: 20px;
-  display: flex;
-  justify-content: space-between;
+.sidebar {
+  .menu-header {
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .menu-item {
+    margin-bottom: 10px;
+  }
 }
-
-.logo {
-  width: 100px;
+.sidebar .active {
+  background: var(--primary-color) !important;
+  color: var(--white) !important;
 }
-
-.menu-item {
-  margin-bottom: 10px;
+::ng-deep .sidebar .p-button {
+  background: transparent !important;
+  border: none;
+  color: var(--text-color) !important;
 }
-
-button {
-  width: 50%;
+/* Responsive Design */
+// Small Screens
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    position: absolute;
+    top: 50px;
+  }
 }
- 
- 

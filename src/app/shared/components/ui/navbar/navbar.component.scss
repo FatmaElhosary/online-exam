@@ -1,26 +1,7 @@
-
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: var(--blue-color); /* Blue background */
-    padding: 10px 20px;
-    color: white;
-    height: 60px;
-    margin: 0 !important;
-   
-  }
-
-  .navbar-left {
-    display: flex;
-    align-items: center;
-    gap: 15px;
-  }
-  
- 
-  .navbar-center{
-    display: none;
-  }
+nav {
+ .p-button{
+  color: wheat;
+ }
   .navbar-right .profile-image {
     width: 40px;
     height: 40px;
@@ -28,24 +9,19 @@
     object-fit: cover;
     cursor: pointer;
   }
+}
 
-    /* Responsive Design */
-
-  @media (max-width: 768px) {
-    .navbar-left {
-      gap: 10px;
-    }
-  
-    .menu-icon {
-      font-size: 20px;
-    }
-  
-    .search-icon {
-      display: block; /* Hide the search icon on smaller screens */
-    }
-  
-    .profile-image {
-      width: 40px;
-      height: 40px;
-    }
+/* Responsive Design */
+// Small Screens
+@media (max-width: 768px) {
+  nav {
+    background: var(--primary-color) !important;
   }
+  .search-icon {
+    display: block; /* Hide the search icon on smaller screens */
+  }
+  .profile-image {
+    width: 40px;
+    height: 40px;
+  }
+}

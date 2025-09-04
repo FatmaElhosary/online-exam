@@ -1,5 +1,5 @@
 <div class="flex flex-col gap-1 pb-5">
-  @if(fieldName=='password'){
+  @if(type=='password'){
   <p-password
     inputStyleClass="w-full"
     [toggleMask]="true"
@@ -34,8 +34,7 @@
       ` Please enter a valid ${ fieldName }.`
     ]"
   ></app-error>
-  } @if(control.errors?.['pattern'] ){ @if(
-  fieldName?.toLowerCase()=='password'){
+  } @if(control.errors?.['pattern'] ){ @if( type=='password'){
   <app-error
     [errorMessages]="[
       'password length should be at min 6 chars . With upper case letter and a number at least with special character'
@@ -47,5 +46,11 @@
       `Invalid ${fieldName} format`
     ]"
   ></app-error>
-  } } }
+  } } @if (control.errors?.['mismatch']) {
+  <app-error
+    [errorMessages]="[
+      `Confirm Password should equal Password`
+    ]"
+  ></app-error>
+  } }
 </div>
