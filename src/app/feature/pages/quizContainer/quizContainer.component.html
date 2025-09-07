@@ -1,0 +1,37 @@
+<ng-container>
+  <div class="p-4">
+    <h2 class="text-title">{{ subjectName }}</h2>
+    <div class="flex flex-col gap-3">
+      @for( quiz of quizzes ;track quiz._id ){
+      <!--  (startExam)="openExamDialog(quiz); _dialogStateService.openDialog()" -->
+      <app-quizCard [quiz]="quiz"></app-quizCard>
+      } @empty{
+      <h2 class=" ">There Are No Quizes For {{ subjectName }}</h2>
+      } @if(errorMessage){
+      <h3>{{ errorMessage }}</h3>
+      }
+
+      <!-- angular @empty array show the messg before display array? -->
+
+      <!-- @empty{
+    <h2 class=" ">There Are No Quizes For {{subjectName}}</h2>
+    } -->
+
+      <!-- @if(quizzes.length==0){
+    <h2 class=" ">There Are No Quizes For {{subjectName}}</h2>
+    }  -->
+    </div>
+  </div>
+</ng-container>
+<!-- <app-instruction-dialog (startExam)="startExam()" />
+ 
+@if(questionDialogVisible()==true){
+<app-question-dialog
+  [visible]="questionDialogVisible()"
+  [exam]="exam"
+></app-question-dialog>
+} -->
+<!-- <app-question-dialog
+  [visible]="questionDialogVisible()"
+  [exam]="exam"
+></app-question-dialog> -->

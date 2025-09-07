@@ -6,6 +6,7 @@ import { ExamsResAdapter } from './interfaces/exams.adapter.res';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { GetAllExamsOnSubjectAdapter } from './adapter/get-all-examsonsubject.service';
 import { ExamsAPIEEndpoints } from './enums/exams.api.endpoints';
+import { environment } from '../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +21,10 @@ export class ExamsService implements ExamsApiInterface {
     let params = new HttpParams().set('subject', subjectId);
 
     return this._httpClient
-      .get(ExamsAPIEEndpoints.GET_ALL_EXAMS_ON_SUBJECT, { params: params })
+      .get(
+        `${environment.baseUrl}${ExamsAPIEEndpoints.GET_ALL_EXAMS_ON_SUBJECT}`,
+        { params: params }
+      )
       .pipe(
         map((res: any) => this._getAllExamsOnSubjectAdapter.adapt(res)),
         catchError((err: any) => of(err))

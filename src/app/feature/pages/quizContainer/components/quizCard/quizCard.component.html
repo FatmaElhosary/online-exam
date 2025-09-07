@@ -1,0 +1,27 @@
+<!-- Quiz -->
+<div class="flex items-center justify-between p-3 rounded-md box-ds">
+  <!-- Quiz Logo -->
+  <div class="flex items-center">
+    <img
+      src="https://cdn-icons-png.flaticon.com/512/5968/5968292.png"
+      alt="{{ quiz.title }} Icon"
+      class="mr-3"
+      style="width: 70px; height: 70px"
+    />
+    <div class=" ">
+      <h4 class="font-inter text-base font-medium">{{ quiz.title }}</h4>
+      <p class="font-inter text-xs font-normal text-[#535353]">
+        {{ quiz.numberOfQuestions }} Questions
+      </p>
+    </div>
+  </div>
+
+  <!-- Quiz Duration and Start Button -->
+  <div class="flex flex-col items-center">
+    <p class="font-inter text-xs font-normal">{{ quiz.duration }} Minutes</p>
+    <app-primary-button
+      [labelText]="'Start'"
+      (btnClicked)="openExam()"
+    ></app-primary-button>
+  </div>
+</div>

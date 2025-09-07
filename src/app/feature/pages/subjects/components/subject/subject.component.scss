@@ -1,0 +1,19 @@
+.subject-text {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: linear-gradient(
+    to right,
+    rgba(25, 53, 202, 0.4),
+    rgba(25, 53, 202, 0.4)
+  );
+  padding: 15px;
+  border-radius: 8px;
+  color: white;
+  text-align: start;
+}
+.subject-text h2 {
+  // margin: 0;
+  font-size: 18px;
+}

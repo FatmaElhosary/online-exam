@@ -1,0 +1,10 @@
+// p {
+//   color: var(--blue-color);
+// }
+.p-field-radiobutton {
+  background-color: var(--light-gray);
+  padding: 16px 8px;
+}
+label:has(input[type="radio"]:checked) {
+  background-color: var(--blue-10);
+}

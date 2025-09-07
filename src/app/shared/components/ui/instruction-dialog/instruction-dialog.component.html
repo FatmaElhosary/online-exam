@@ -1,28 +1,20 @@
-<div class="card flex justify-content-center">
-  <p-dialog
-    resizable="false"
-    header=" "
-    [modal]="true"
-    [visible]="this._dialogStateService.dialogVisible()"
-    (onHide)="onDialogHide()"
-    [style]="{ width: '25rem' }"
-    closeOnEscape="false"
-    closable="false"
-    draggable="false"
-    resizable="false"
-    class=""
-  >
-  <h3>Instructions</h3>
+<ng-container>
+  @if(startExam){
+  <!-- <app-questions [exam]="exam"></app-questions> -->
+  <app-question-dialog [exam]="exam"></app-question-dialog>
+  }@else {
+  <div class="flex flex-col justify-center">
+    <h3>Instructions</h3>
     <ul class="mb-5 mt-2 mx-3">
       @for(inst of instructions();track inst ){
-      <li>{{ inst }}</li>
+      <li >{{ inst }}</li>
       }
     </ul>
-    <button
-      class="btn-start text-white-alpha-90 w-full"
-      (click)="onDialogHide()"
-    >
-      Start
-    </button>
-  </p-dialog>
-</div>
+
+    <app-primary-button
+      [labelText]="'Start'"
+      (btnClicked)="openExam()"
+    ></app-primary-button>
+  </div>
+  }
+</ng-container>

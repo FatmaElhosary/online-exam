@@ -1,0 +1,22 @@
+<div class="box-ds p-5 h-72 my-5"></div>
+
+<div class="box-ds p-5">
+  <h2 class="text-title !text-(--primary-color)">Quizes</h2>
+  <div class="grid md:grid-cols-3 grid-col-1 m-0 gap-4">
+    @for(subject of subjects ;track subject._id ){
+    <app-subject
+      [routerLink]="['/home/exams/{{subject._id}}']"
+      [queryParams]="{ subject: subject._id, subjectName: subject.name }"
+      [subject]="subject"
+    >
+      >
+    </app-subject>
+
+    }
+  </div>
+  @if(!subjects) {
+  <h3 class="text-black">No Quizes found</h3>
+  } @if(errorMessage){
+  <h3>{{ errorMessage }}</h3>
+  }
+</div>

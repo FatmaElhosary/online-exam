@@ -1,0 +1,84 @@
+@if(loading){
+<app-loading class="h-full" />
+} @else(){
+<div class="flex flex-col gap-4">
+  <!-- timer header -->
+  <div class="flex justify-between items-center">
+    <p>
+      Question {{ currentQuestionIndex() + 1 }} of
+      {{ questions().length }}
+    </p>
+    <app-timer [time]="exam().duration"></app-timer>
+  </div>
+  <!-- progress bar  -->
+  <div class="flex gap-1 my-4 w-full">
+    @for(i of questionNumbers; track $index){
+    <div class="flex-1">
+      <div
+        class="rounded-full w-[10px] h-[10px]"
+        [class]="
+          $index <= currentQuestionIndex()
+            ? 'bg-(--primary-color)'
+            : 'bg-[#D9D9D9]'
+        "
+      ></div>
+    </div>
+    }
+  </div>
+
+  <!-- Question with Answers -->
+  <!-- <app-question [question]="currentQuestion"></app-question> -->
+  <ng-container>
+    <h3 class="question">
+      {{ currentQuestion.question }}
+    </h3>
+    @for(answer of currentQuestion.answers;track answer.key){
+    @if(currentQuestion.type=='single_choice'){
+    <label
+      [for]="answer.key"
+      class="flex items-center p-field-radiobutton w-full p-2 rounded cursor-pointer"
+    >
+      <p-radiobutton
+        [inputId]="answer.key"
+        [name]="`quextion ${currentQuestion._id}`"
+        [value]="answer.answer"
+        [(ngModel)]="selectedAnswer"
+      ></p-radiobutton>
+
+      <span class="ms-2">{{ answer.answer }}</span>
+    </label>
+    } @else {
+    <label
+      [for]="answer.key"
+      class="flex items-center p-field-radiobutton w-full p-2 rounded cursor-pointer"
+    >
+      <p-checkbox
+        [inputId]="answer.key"
+        [name]="`quextion ${currentQuestion._id}`"
+        [value]="answer.answer"
+        [(ngModel)]="selectedAnswer"
+      ></p-checkbox>
+
+      <span class="ms-2">{{ answer.answer }}</span>
+    </label>
+    } }
+  </ng-container>
+  <!-- Controls -->
+  <div class="flex gap-3 mt-5">
+    <app-primary-button
+      class="flex-1"
+      [labelText]="'Back'"
+      (btnClicked)="getPreQuestion()"
+      [disabled]="currentQuestionIndex() === 0"
+    ></app-primary-button>
+    <app-primary-button
+      class="flex-1"
+      [labelText]="'Next'"
+      (btnClicked)="getNextQuestion()"
+      [disabled]="
+        currentQuestionIndex() === questions().length - 1 || !selectedAnswer
+      "
+    ></app-primary-button>
+  </div>
+</div>
+}

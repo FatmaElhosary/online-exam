@@ -1,11 +1,19 @@
-import { Component, input, Input, OnDestroy, OnInit, signal, WritableSignal } from '@angular/core';
+import {
+  Component,
+  input,
+  OnDestroy,
+  OnInit,
+  signal,
+  WritableSignal,
+} from '@angular/core';
 import { QuestionsService } from '../../services/questions.service';
 import { ButtonModule } from 'primeng/button';
 import { DialogModule } from 'primeng/dialog';
 import { Subscription } from 'rxjs';
 import { Question } from '../../services/interfaces/questions.adapter.res';
- import { QuestionComponent } from "../../../shared/components/ui/question/question.component";
+import { QuestionComponent } from '../../../shared/components/ui/question/question.component';
 import { Exam } from '../../services/interfaces/exams.adapter.res';
+import { DynamicDialogConfig } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-questions',
@@ -15,13 +23,20 @@ import { Exam } from '../../services/interfaces/exams.adapter.res';
   styleUrl: './questions.component.scss',
 })
 export class QuestionsComponent implements OnDestroy, OnInit {
+  //exam:  Exam;
   exam = input.required<Exam>();
-  questions=signal<Question[]>([]);
-  questionId:number=0;
+  questions: WritableSignal<Question[]> = signal<Question[]>([]);
+  questionId: number = 0;
   subscription = new Subscription();
-  constructor(private _questionsService: QuestionsService) {}
+
+  constructor(
+    private _questionsService: QuestionsService,
+    // public config: DynamicDialogConfig
+  ) {
+    // this.exam = this.config.data.exam;
+  }
   ngOnInit(): void {
-    console.log(this.exam());
+    console.log(this.exam);
     this.getAllQuestionsOnExam();
   }
 
@@ -31,8 +46,8 @@ export class QuestionsComponent implements OnDestroy, OnInit {
       .subscribe({
         next: (res) => {
           console.log(res);
-          this.questions.set( res.data);
-           //  this.errorMessage = res.err?.message ?? null;
+          this.questions.set(res.data);
+          //  this.errorMessage = res.err?.message ?? null;
         },
       });
     this.subscription.add(sub);

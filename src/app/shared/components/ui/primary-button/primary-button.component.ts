@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 
 @Component({
@@ -12,4 +12,10 @@ export class PrimaryButtonComponent {
   @Input({ required: false }) disabled: boolean = false;
   @Input({ required: false }) type: string = 'submit';
   @Input({ required: false }) loading: boolean = false;
+  @Output() btnClicked = new EventEmitter(false);
+
+  dispatchClick() {
+    console.log('clicked');
+    this.btnClicked.emit(true);
+  }
 }

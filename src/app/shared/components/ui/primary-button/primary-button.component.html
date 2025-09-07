@@ -1,10 +1,11 @@
 <button
   pButton
   [disabled]="disabled"
-  class="w-full py-3"
+  class="w-full"
   [type]="type"
   [rounded]="true"
   [loading]="loading"
+  (click)="dispatchClick()"
 >
   {{ labelText }}
 </button>

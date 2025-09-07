@@ -1,0 +1,16 @@
+<div class="flex flex-col gap-5">
+  <h3 class="text-title">Your score</h3>
+
+  <div class="flex gap-3 mt-5">
+    <app-primary-button
+      class="flex-1"
+      [labelText]="'Close'"
+      (btnClicked)="closeDialog()"
+    ></app-primary-button>
+    <app-primary-button
+      class="flex-1"
+      [labelText]="'Show results'"
+      (btnClicked)="ShowResults()"
+    ></app-primary-button>
+  </div>
+</div>

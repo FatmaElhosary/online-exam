@@ -1,5 +1,5 @@
-import { LoginComponent } from './core/pages/login/login.component';
 import { Routes } from '@angular/router';
+import { LoginComponent } from './core/pages/login/login.component';
 
 export const routes: Routes = [
   {
@@ -9,11 +9,6 @@ export const routes: Routes = [
         (c) => c.AuthLayoutComponent
       ),
     children: [
-      // {
-      //   path: '',
-      //   redirectTo: 'login',
-      //   pathMatch: 'full',
-      // },
       {
         path: 'login',
         loadComponent: () =>
@@ -66,15 +61,15 @@ export const routes: Routes = [
       {
         path: 'quizes',
         loadComponent: () =>
-          import('./feature/pages/quizes/quizes.component').then(
-            (e) => e.QuizesComponent
+          import('./feature/pages/subjects/subjects.component').then(
+            (e) => e.SubjectsComponent
           ),
       },
       {
         path: 'exams/:examId',
         loadComponent: () =>
-          import('./feature/pages/exams/exams.component').then(
-            (e) => e.ExamsComponent
+          import('./feature/pages/quizContainer/quizContainer.component').then(
+            (e) => e.QuizContainerComponent
           ),
       },
     ],

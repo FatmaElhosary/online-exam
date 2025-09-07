@@ -1,19 +1,19 @@
 import { Component, OnInit } from '@angular/core';
-import { SubjectComponent } from '../../../shared/components/ui/subject/subject.component';
-import { SubjectsService } from '../../services/subjects.service';
+ import { SubjectsService } from '../../services/subjects.service';
 import { Subject } from '../../services/interfaces/subjects.adapter.res';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { RouterModule,     } from '@angular/router';
+import { RouterModule } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { SubjectComponent } from './components/subject/subject.component';
 
 @Component({
-  selector: 'app-quizes',
+  selector: 'app-subjects',
   standalone: true,
-  imports: [SubjectComponent ,ScrollingModule,RouterModule],
-  templateUrl: './quizes.component.html',
-  styleUrl: './quizes.component.scss',
+  imports: [SubjectComponent, ScrollingModule, RouterModule],
+  templateUrl: './subjects.component.html',
+  styleUrl: './subjects.component.scss',
 })
-export class QuizesComponent implements OnInit {
+export class SubjectsComponent implements OnInit {
   subs: Subscription[] = [];
   subjects: Subject[] = [];
   errorMessage: string | null = null;
@@ -34,6 +34,6 @@ export class QuizesComponent implements OnInit {
     this.subs.push(sub1);
   }
   ngOnDestroy(): void {
-    this.subs.forEach(sub=>sub.unsubscribe());
+    this.subs.forEach((sub) => sub.unsubscribe());
   }
 }

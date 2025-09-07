@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { SubjectsAPIEEndpoints } from './enums/subjects.api.endpoints';
 import { catchError, map, Observable, of } from 'rxjs';
 import { GetAllSubjectsAdapter } from './adapter/get-all-subjects.service';
+import { environment } from '../../../environments/environment.development';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,7 @@ export class SubjectsService implements SubjectApiInterface {
     private _getAllSubjectsAdapter: GetAllSubjectsAdapter
   ) {}
   getAllSubjects(): Observable<SubjectsResAdapter> {
-    return this._httpClient.get(SubjectsAPIEEndpoints.GET_ALL_SUBJECTS).pipe(
+    return this._httpClient.get(`${environment.baseUrl}${SubjectsAPIEEndpoints.GET_ALL_SUBJECTS}`).pipe(
       map((res: any) => this._getAllSubjectsAdapter.adapt(res)),
       catchError((err: any) => of(err))
     );
