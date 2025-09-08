@@ -1,4 +1,4 @@
-import { Exam } from './../../../../feature/services/interfaces/exams.adapter.res';
+import { Exam } from '../../../../services/interfaces/exams.adapter.res';
 import {
   Component,
   EventEmitter,
@@ -12,10 +12,10 @@ import {
 import { DialogModule } from 'primeng/dialog';
 import { ButtonModule } from 'primeng/button';
 
-import { PrimaryButtonComponent } from '../primary-button/primary-button.component';
+import { PrimaryButtonComponent } from '../../../../../shared/components/ui/primary-button/primary-button.component';
 import { DynamicDialogConfig } from 'primeng/dynamicdialog';
-import { QuestionsComponent } from '../../../../feature/pages/questions/questions.component';
-import { QuestionDialogComponent } from '../../../../feature/pages/question-dialog/question-dialog.component';
+import { QuestionsComponent } from '../../../questions/questions.component';
+import { QuestionDialogComponent } from '../../../question-dialog/question-dialog.component';
 
 @Component({
   selector: 'app-instruction-dialog',
@@ -34,6 +34,7 @@ export class InstructionDialogComponent {
   startExam: boolean = false;
   constructor(public config: DynamicDialogConfig) {
     this.exam = this.config.data.exam;
+    console.log('Exaaaam', this.exam);
   }
 
   instructions: InputSignal<string[]> = input([

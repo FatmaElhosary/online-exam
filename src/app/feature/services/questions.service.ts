@@ -17,7 +17,7 @@ export class QuestionsService implements QuestionsApiInterface {
   ) {}
   getAllQuestionsOnExam(examId: string): Observable<QuestionsResAdapter> {
     // Setup log namespace query parameter
-    let params = new HttpParams().set('exam', examId);
+    const params = new HttpParams().set('exam', examId);
 
     return this._httpClient
       .get(

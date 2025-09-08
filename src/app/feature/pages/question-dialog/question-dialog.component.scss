@@ -5,6 +5,7 @@
   background-color: var(--light-gray);
   padding: 16px 8px;
 }
-label:has(input[type="radio"]:checked) {
+label:has(input[type="radio"]:checked),
+label:has(input[type="checkbox"]:checked) {
   background-color: var(--blue-10);
 }

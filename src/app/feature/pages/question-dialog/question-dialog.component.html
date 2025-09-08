@@ -1,6 +1,6 @@
 @if(loading){
 <app-loading class="h-full" />
-} @else(){
+} @switch (modalView) { @case (MdalView.Quextions) {
 <div class="flex flex-col gap-4">
   <!-- timer header -->
   <div class="flex justify-between items-center">
@@ -19,7 +19,7 @@
         [class]="
           $index <= currentQuestionIndex()
             ? 'bg-(--primary-color)'
-            : 'bg-[#D9D9D9]'
+            : 'bg-(--simple-gray)'
         "
       ></div>
     </div>
@@ -75,10 +75,13 @@
       class="flex-1"
       [labelText]="'Next'"
       (btnClicked)="getNextQuestion()"
-      [disabled]="
-        currentQuestionIndex() === questions().length - 1 || !selectedAnswer
-      "
+      [disabled]="!selectedAnswer"
     ></app-primary-button>
   </div>
 </div>
-}
+} @case (MdalView.ResulrChart) {
+<app-scores-chart></app-scores-chart>
+} @case (MdalView.CheckAnswers) {
+
+<app-review-answers />
+} }

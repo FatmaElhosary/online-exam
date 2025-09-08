@@ -6,7 +6,7 @@ import {
   DynamicDialogModule,
   DynamicDialogRef,
 } from 'primeng/dynamicdialog';
-import { InstructionDialogComponent } from '../../../../../shared/components/ui/instruction-dialog/instruction-dialog.component';
+import { InstructionDialogComponent } from '../instruction-dialog/instruction-dialog.component';
 
 @Component({
   selector: 'app-quizCard',
@@ -38,6 +38,7 @@ export class QuizCardComponent implements OnDestroy {
     });
     // this.startExam.emit(true);
   }
+
 
   ngOnDestroy(): void {
     if (this.ref) {

@@ -19,6 +19,9 @@ import { ProgressBarModule } from 'primeng/progressbar';
 import { Question } from '../../services/interfaces/questions.adapter.res';
 import { Exam } from '../../services/interfaces/exams.adapter.res';
 import { LoadingComponent } from '../../../shared/components/ui/loading/loading.component';
+import { ScoresChartComponent } from './components/scores-chart/scores-chart.component';
+import { MdalView } from './enums/modelView.enum';
+import { ReviewAnswersComponent } from "./components/review-answers/review-answers.component";
 
 @Component({
   selector: 'app-question-dialog',
@@ -33,7 +36,9 @@ import { LoadingComponent } from '../../../shared/components/ui/loading/loading.
     PrimaryButtonComponent,
     FormsModule,
     LoadingComponent,
-  ],
+    ScoresChartComponent,
+    ReviewAnswersComponent
+],
   templateUrl: './question-dialog.component.html',
   styleUrl: './question-dialog.component.scss',
 })
@@ -44,9 +49,12 @@ export class QuestionDialogComponent implements OnInit, OnDestroy {
   subscription = new Subscription();
   selectedAnswer: string | null = null;
   loading: boolean = false;
+  MdalView = MdalView; // expose enum to template
+  modalView: MdalView = MdalView.Quextions;
   constructor(private _questionsService: QuestionsService) {}
   ngOnInit(): void {
-    console.log('exam', this.exam());
+    // console.log('exam', this.exam());
+
     this.getAllQuestionsOnExam();
   }
 
@@ -78,14 +86,16 @@ export class QuestionDialogComponent implements OnInit, OnDestroy {
     // console.log(this.currentQuestionIndex() + 1);
     // console.log(this.questions().length);
     if (
-      this.currentQuestionIndex() + 1 != this.questions().length &&
+      this.currentQuestionIndex() + 1 != this.questions().length  &&
       this.selectedAnswer
     ) {
       this.currentQuestionIndex.set(this.currentQuestionIndex() + 1);
     } else {
       // Finished Exam
+      this.modalView = MdalView.ResulrChart;
     }
   }
+
   ngOnDestroy(): void {
     this.subscription.unsubscribe();
   }
